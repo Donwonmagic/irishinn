@@ -11,13 +11,18 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f8f9fa;
+    background-color: #f5f5f5;
     overflow-x: hidden;
 }
 
 a {
     text-decoration: none;
     color: inherit;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #e74c3c;
 }
 
 ul {
@@ -35,22 +40,21 @@ header {
     position: fixed;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 header .logo img {
-    height: 50px;
+    height: 60px;
 }
 
 header .main-nav ul {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 header .main-nav a {
     color: #fff;
     font-weight: bold;
-    transition: color 0.3s;
 }
 
 header .main-nav a:hover {
@@ -62,10 +66,15 @@ header .cta {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     color: #fff;
+    font-weight: bold;
+}
+
+header .cta:hover {
+    background-color: #c0392b;
 }
 
 header .social-icons img {
-    width: 20px;
+    width: 24px;
     margin-left: 1rem;
     cursor: pointer;
 }
@@ -75,6 +84,8 @@ header .social-icons img {
     margin-top: 80px;
     position: relative;
     overflow: hidden;
+    background: linear-gradient(to bottom, #34495e, #2c3e50);
+    color: #fff;
 }
 
 .hero .carousel {
@@ -94,196 +105,82 @@ header .social-icons img {
     align-items: center;
     text-align: center;
     padding: 2rem;
-    color: #fff;
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 2rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
 .hero .btn {
-    background-color: #e74c3c;
+    background-color: #f39c12;
     padding: 0.75rem 1.5rem;
     border-radius: 5px;
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    transition: background-color 0.3s;
 }
 
 .hero .btn:hover {
-    background-color: #c0392b;
+    background-color: #d35400;
 }
 
-/* About Section */
-.about {
-    padding: 4rem 2rem;
-    background-color: #fff;
-    text-align: center;
-}
-
-.about h1 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    color: #2c3e50;
-}
-
-.about h2 {
-    font-size: 2rem;
-    margin: 1.5rem 0;
-    color: #34495e;
-}
-
-.about p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: #555;
-}
-
-.about ul {
-    max-width: 800px;
+/* Containers */
+.container {
+    max-width: 1200px;
     margin: 0 auto;
-    text-align: left;
-    padding: 0;
-}
-
-.about li {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.about li::before {
-    content: '\2022';
-    color: #e74c3c;
-    font-size: 1.2rem;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-/* Events Section */
-.events {
-    background-color: #ecf0f1;
-    padding: 4rem 2rem;
-    text-align: center;
-}
-
-.events h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.events .event-highlight {
-    max-width: 600px;
-    margin: auto;
-    text-align: left;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.events .event-highlight img {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
-}
-
-.events .btn {
-    margin-top: 1rem;
-    display: inline-block;
-    background-color: #3498db;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.events .btn:hover {
-    background-color: #2980b9;
-}
-
-/* Signature Dishes Section */
-.dishes {
-    padding: 4rem 2rem;
+    padding: 2rem;
     background-color: #fff;
-    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.dishes h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+/* Sections */
+section {
+    margin-bottom: 4rem;
+    padding: 2rem;
 }
 
-.dishes .dish {
-    display: inline-block;
-    margin: 1rem;
-    text-align: center;
-}
-
-.dishes img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+section h1, section h2 {
+    color: #2c3e50;
     margin-bottom: 1rem;
 }
 
-.dishes h3 {
+section p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Cards */
+.card {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.card h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    color: #3498db;
 }
 
-.dishes p {
+.card p {
     font-size: 1rem;
-    margin-bottom: 1rem;
-}
-
-.dishes .btn {
-    background-color: #16a085;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.dishes .btn:hover {
-    background-color: #148f77;
-}
-
-/* CTA Section */
-.cta-section {
-    background-color: #ecf0f1;
-    padding: 2rem;
-    text-align: center;
-    margin-top: 3rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.cta-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #2c3e50;
-}
-
-.cta-section p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
     color: #555;
 }
 
-.cta-section .btn {
+/* Buttons */
+.btn {
+    display: inline-block;
     background-color: #3498db;
     padding: 0.75rem 1.5rem;
     border-radius: 5px;
@@ -293,8 +190,54 @@ header .social-icons img {
     transition: background-color 0.3s;
 }
 
-.cta-section .btn:hover {
+.btn:hover {
     background-color: #2980b9;
+}
+
+/* Contact Form */
+.contact-form {
+    background-color: #ecf0f1;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+    display: block;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.contact-form button {
+    background-color: #e74c3c;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #c0392b;
 }
 
 /* Footer */
@@ -303,19 +246,17 @@ footer {
     color: #fff;
     padding: 2rem;
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 footer .quick-links a {
-    display: inline-block;
-    color: #fff;
-    margin: 0.5rem;
+    color: #f39c12;
+    margin: 0 1rem;
     font-weight: bold;
-    transition: color 0.3s;
 }
 
 footer .quick-links a:hover {
-    color: #f39c12;
+    color: #e74c3c;
 }
 
 footer .contact-info p {
@@ -323,7 +264,7 @@ footer .contact-info p {
 }
 
 footer .social-icons img {
-    width: 20px;
+    width: 24px;
     margin: 0 0.5rem;
     cursor: pointer;
 }
@@ -332,6 +273,22 @@ footer .social-icons img:hover {
     filter: brightness(1.2);
 }
 
-footer .newsletter button:hover {
-    background-color: #c0392b;
+/* Media Queries */
+@media (max-width: 768px) {
+    header .main-nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
 }
