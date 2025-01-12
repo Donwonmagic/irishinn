@@ -1,0 +1,303 @@
+/* Irish Inn Website Stylesheet */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #2c3e50;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header .logo img {
+    height: 50px;
+}
+
+header .main-nav ul {
+    display: flex;
+    gap: 1.5rem;
+}
+
+header .main-nav a {
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header .main-nav a:hover {
+    color: #f39c12;
+}
+
+header .cta {
+    background-color: #e74c3c;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #fff;
+}
+
+header .social-icons img {
+    width: 20px;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero .carousel {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero .slide {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero .btn {
+    background-color: #e74c3c;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.hero .btn:hover {
+    background-color: #c0392b;
+}
+
+/* About Section */
+.about {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.about p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.about ul {
+    margin: 1rem auto;
+    max-width: 600px;
+}
+
+.about li {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.about .btn {
+    background-color: #f39c12;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.about .btn:hover {
+    background-color: #d35400;
+}
+
+/* Events Section */
+.events {
+    background-color: #ecf0f1;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.events h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.events .event-highlight {
+    max-width: 600px;
+    margin: auto;
+    text-align: left;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.events .event-highlight img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.events .btn {
+    margin-top: 1rem;
+    display: inline-block;
+    background-color: #3498db;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.events .btn:hover {
+    background-color: #2980b9;
+}
+
+/* Signature Dishes Section */
+.dishes {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.dishes h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.dishes .dish {
+    display: inline-block;
+    margin: 1rem;
+    text-align: center;
+}
+
+.dishes img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.dishes h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.dishes p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.dishes .btn {
+    background-color: #16a085;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.dishes .btn:hover {
+    background-color: #148f77;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+footer .quick-links a {
+    display: inline-block;
+    color: #fff;
+    margin: 0.5rem;
+    font-weight: bold;
+}
+
+footer .quick-links a:hover {
+    color: #f39c12;
+}
+
+footer .contact-info p {
+    margin: 0.5rem 0;
+}
+
+footer .newsletter form {
+    margin-top: 1rem;
+}
+
+footer .newsletter input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+    width: 250px;
+}
+
+footer .newsletter button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #e74c3c;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+footer .newsletter button:hover {
+    background-color: #c0392b;
+}
