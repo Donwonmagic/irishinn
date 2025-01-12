@@ -1,4 +1,4 @@
-/* Irish Inn Website Stylesheet */
+/* Combined Irish Inn Website Stylesheet */
 
 /* General Reset */
 * {
@@ -130,37 +130,45 @@ header .social-icons img {
     text-align: center;
 }
 
-.about h2 {
-    font-size: 2.5rem;
+.about h1 {
+    font-size: 3rem;
     margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin: 1.5rem 0;
+    color: #34495e;
 }
 
 .about p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+    color: #555;
 }
 
 .about ul {
-    margin: 1rem auto;
-    max-width: 600px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 0;
 }
 
 .about li {
     font-size: 1rem;
-    margin: 0.5rem 0;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
 }
 
-.about .btn {
-    background-color: #f39c12;
-    padding: 0.5rem 1.5rem;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.about .btn:hover {
-    background-color: #d35400;
+.about li::before {
+    content: '\2022';
+    color: #e74c3c;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 /* Events Section */
@@ -253,12 +261,49 @@ header .social-icons img {
     background-color: #148f77;
 }
 
+/* CTA Section */
+.cta-section {
+    background-color: #ecf0f1;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.cta-section .btn {
+    background-color: #3498db;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.cta-section .btn:hover {
+    background-color: #2980b9;
+}
+
 /* Footer */
 footer {
     background-color: #2c3e50;
     color: #fff;
     padding: 2rem;
     text-align: center;
+    margin-top: 3rem;
 }
 
 footer .quick-links a {
@@ -266,6 +311,7 @@ footer .quick-links a {
     color: #fff;
     margin: 0.5rem;
     font-weight: bold;
+    transition: color 0.3s;
 }
 
 footer .quick-links a:hover {
@@ -276,26 +322,14 @@ footer .contact-info p {
     margin: 0.5rem 0;
 }
 
-footer .newsletter form {
-    margin-top: 1rem;
-}
-
-footer .newsletter input {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-    margin-right: 0.5rem;
-    width: 250px;
-}
-
-footer .newsletter button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    background-color: #e74c3c;
-    color: #fff;
-    font-weight: bold;
+footer .social-icons img {
+    width: 20px;
+    margin: 0 0.5rem;
     cursor: pointer;
+}
+
+footer .social-icons img:hover {
+    filter: brightness(1.2);
 }
 
 footer .newsletter button:hover {
