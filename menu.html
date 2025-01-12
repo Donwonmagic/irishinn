@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the diverse menus at the Irish Inn, featuring traditional Irish cuisine and contemporary favorites.">
+    <title>Menus - Irish Inn</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Irish Inn Logo">
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="private-dining.html">Private Dining</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="reservation.html" class="cta">Reservations</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="#"><img src="icons/facebook.svg" alt="Facebook"></a>
+            <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="menu">
+            <h1>Our Menus</h1>
+            <p>Explore our variety of offerings from brunch to dinner and drinks. Fresh, local ingredients and exceptional preparation make every dish unforgettable.</p>
+
+            <!-- Tabbed Menu Navigation -->
+            <div class="menu-tabs">
+                <button class="tab-link active" onclick="openMenu(event, 'Brunch')">Brunch</button>
+                <button class="tab-link" onclick="openMenu(event, 'Lunch')">Lunch</button>
+                <button class="tab-link" onclick="openMenu(event, 'Dinner')">Dinner</button>
+                <button class="tab-link" onclick="openMenu(event, 'Drinks')">Drinks</button>
+                <button class="tab-link" onclick="openMenu(event, 'Kids')">Kids</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="Brunch" class="menu-content active">
+                <h2>Brunch Menu</h2>
+                <ul>
+                    <li><strong>Pancakes</strong> - Fluffy pancakes served with maple syrup and fresh berries.</li>
+                    <li><strong>Irish Breakfast</strong> - Traditional Irish breakfast with sausages, bacon, eggs, and more.</li>
+                    <li><strong>Eggs Benedict</strong> - Poached eggs with hollandaise on a toasted English muffin.</li>
+                </ul>
+            </div>
+
+            <div id="Lunch" class="menu-content">
+                <h2>Lunch Menu</h2>
+                <ul>
+                    <li><strong>Shepherd’s Pie</strong> - A classic Irish dish with seasoned lamb and vegetables topped with mashed potatoes.</li>
+                    <li><strong>Fish & Chips</strong> - Beer-battered cod served with tartar sauce and fries.</li>
+                    <li><strong>Reuben Sandwich</strong> - Corned beef, sauerkraut, Swiss cheese, and dressing on rye.</li>
+                </ul>
+            </div>
+
+            <div id="Dinner" class="menu-content">
+                <h2>Dinner Menu</h2>
+                <ul>
+                    <li><strong>Rack of Lamb</strong> - Herb-crusted lamb served with seasonal vegetables.</li>
+                    <li><strong>Seafood Stew</strong> - A rich stew with fresh seafood and a tomato-based broth.</li>
+                    <li><strong>Filet Mignon</strong> - Grilled to perfection, served with garlic mashed potatoes.</li>
+                </ul>
+            </div>
+
+            <div id="Drinks" class="menu-content">
+                <h2>Drinks Menu</h2>
+                <ul>
+                    <li><strong>Irish Coffee</strong> - Hot coffee with whiskey and cream.</li>
+                    <li><strong>Guinness</strong> - The classic Irish stout.</li>
+                    <li><strong>Aperol Spritz</strong> - A refreshing cocktail with prosecco, Aperol, and soda.</li>
+                </ul>
+            </div>
+
+            <div id="Kids" class="menu-content">
+                <h2>Kids Menu</h2>
+                <ul>
+                    <li><strong>Grilled Cheese</strong> - Classic sandwich served with fries.</li>
+                    <li><strong>Chicken Tenders</strong> - Crispy tenders served with a side of honey mustard.</li>
+                    <li><strong>Mac & Cheese</strong> - Creamy, cheesy, and kid-approved.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="quick-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="events.html">Events</a>
+            <a href="reservation.html">Reservations</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="contact-info">
+            <p>6119 Tulane Avenue | Glen Echo, MD 20812</p>
+            <p>Phone: (301) 229-6600</p>
+            <p>Email: <a href="mailto:info@IrishInnGlenEcho.com">info@IrishInnGlenEcho.com</a></p>
+        </div>
+        <div class="social-icons">
+            <a href="#"><img src="icons/facebook.svg" alt="Facebook"></a>
+            <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script>
+        function openMenu(evt, menuName) {
+            let i, tabContent, tabLinks;
+            tabContent = document.getElementsByClassName("menu-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            tabLinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+            document.getElementById(menuName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
