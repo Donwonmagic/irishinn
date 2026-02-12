@@ -16,12 +16,17 @@
             <div class="hidden-mobile">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">Story</a></li>
                     <li><a href="menu.html" class="active">Menus</a></li>
                     <li><a href="events.html">Events</a></li>
                     <li><a href="https://resy.com/cities/dc/the-irish-inn-at-glen-echo" target="_blank" class="btn-book">Book Table</a></li>
                 </ul>
             </div>
+            <div class="menu-toggle" id="mobile-menu-btn">☰</div>
+        </div>
+        <div class="mobile-dropdown" id="mobile-dropdown">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menus</a>
+            <a href="events.html">Events</a>
         </div>
     </nav>
 
@@ -37,8 +42,8 @@
                     <li data-target="entrees">Entrées</li>
                 </ul>
                 <div class="dietary-toggles">
-                    <button class="toggle-btn" data-filter="gf">GF Only</button>
-                    <button class="toggle-btn" data-filter="v">Veg Only</button>
+                    <button class="toggle-btn" data-filter="gf">GF</button>
+                    <button class="toggle-btn" data-filter="v">Veg</button>
                 </div>
             </div>
         </div>
@@ -47,11 +52,23 @@
     <main class="container menu-body">
         <div id="menu-content" class="fade-in-up">
             </div>
-        
         <div class="disclaimer">
             <p>* Consuming raw or undercooked meats may increase risk of foodborne illness.</p>
         </div>
     </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>The Irish Inn</h3>
+                <p>6119 Tulane Ave, Glen Echo, MD</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>(301) 229-6600</p>
+            </div>
+        </div>
+    </footer>
 
     <div class="mobile-bottom-nav">
         <a href="index.html" class="nav-item"><span>🏠</span> Home</a>
