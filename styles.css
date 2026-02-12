@@ -309,3 +309,74 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
     }
     .hero-center-badge span:last-child { font-size: 1rem; }
 }
+
+/* ADD THIS TO YOUR EXISTING STYLES.CSS */
+
+/* --- SOURCING BAR (The "Authority" Section) --- */
+.sourcing-bar {
+    background-color: var(--white);
+    border-bottom: 1px solid #eee;
+    padding: 3rem 0;
+}
+
+.sourcing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.source-item .icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.source-item h4 {
+    color: var(--green-dark);
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.source-item p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* --- DOWNLOAD KIT BUTTON (The "Pro" Move) --- */
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--white);
+    color: var(--green-dark);
+    border: 2px solid var(--green-dark);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+    background-color: var(--green-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* --- FOOTER UPDATES --- */
+.small-text {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 0.5rem;
+}
+
+.small-text a {
+    color: #aaa;
+    text-decoration: underline;
+}
