@@ -144,3 +144,66 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
     .nav-links { display: none; } 
     /* Mobile nav handles navigation now */
 }
+
+/* --- TABLET & SMALL LAPTOP FIXES (769px - 1024px) --- */
+@media screen and (max-width: 1024px) {
+    
+    /* 1. FORCE HAMBURGER MENU EARLIER */
+    /* Desktop nav gets crowded on tablets, so we switch to mobile menu */
+    .hidden-mobile { display: none; }
+    .nav-links { 
+        display: none; /* Hidden by default, toggled via JS */
+        position: absolute; 
+        top: 60px; 
+        right: 0; 
+        width: 100%; 
+        background: var(--green-dark); 
+        flex-direction: column; 
+        text-align: center; 
+        padding: 2rem; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .nav-links.active { display: flex; }
+    .menu-toggle { display: block; margin-right: 20px; }
+
+    /* 2. SPLIT HERO STACKING */
+    /* Side-by-side looks squished on portrait tablets. We stack them. */
+    .split-hero { flex-direction: column; height: auto; }
+    .split-side { 
+        height: 50vh; /* Each side takes half the screen height */
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    /* 3. CENTER BADGE ADJUSTMENT */
+    /* Scale down the center badge or hide it if it covers too much */
+    .hero-center-badge {
+        width: 120px;
+        height: 120px;
+        font-size: 0.8rem;
+        padding: 1rem;
+    }
+
+    /* 4. ROOM SHOWCASE & MENUS */
+    /* Stop columns from being too narrow */
+    .room-row, .room-row.reverse { flex-direction: column; }
+    .room-image { width: 100%; height: 350px; min-width: auto; }
+    .room-details { padding: 3rem 2rem; }
+    
+    .menu-grid {
+        grid-template-columns: 1fr; /* Force single column for better readability */
+    }
+
+    /* 5. TEXT SIZING */
+    .hero-text h1 { font-size: 3rem; }
+    .section-title { font-size: 2rem; }
+    
+    /* 6. BOTTOM NAV VISIBILITY */
+    /* Ensure the "App-like" bottom bar appears on tablets too */
+    .mobile-bottom-nav { display: flex; justify-content: space-around; }
+    
+    /* Add padding to body so bottom nav doesn't cover content */
+    body { padding-bottom: 80px; }
+}
+
