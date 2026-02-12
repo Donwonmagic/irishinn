@@ -12,27 +12,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Restaurant",
-      "name": "The Irish Inn at Glen Echo",
-      "image": "https://irishinnglenecho.com/logo.png",
-      "telephone": "+13012296600",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "6119 Tulane Ave",
-        "addressLocality": "Glen Echo",
-        "addressRegion": "MD",
-        "postalCode": "20812"
-      },
-      "priceRange": "$$",
-      "servesCuisine": "Irish",
-      "acceptsReservations": "true",
-      "url": "https://irishinnglenecho.com"
-    }
-    </script>
 </head>
 <body>
 
@@ -48,16 +27,22 @@
                     <li><a href="https://resy.com/cities/dc/the-irish-inn-at-glen-echo" target="_blank" class="btn-book">Book Table</a></li>
                 </ul>
             </div>
+            <div class="menu-toggle" id="mobile-menu-btn">☰</div>
+        </div>
+        <div class="mobile-dropdown" id="mobile-dropdown">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menus</a>
+            <a href="events.html">Events</a>
+            <a href="#about">Story</a>
         </div>
     </nav>
 
-        <header class="split-hero">
+    <header class="split-hero">
         
         <div class="hero-center-badge">
             <span>One Menu</span>
             <span>Served in<br>Both Spaces</span>
         </div>
-
 
         <a href="menu.html" class="split-side pub-side">
             <div class="split-bg" style="background-image: url('bar_red.jpg');"></div>
@@ -81,20 +66,9 @@
 
     </header>
 
-        <a href="menu.html#entrees" class="split-side dining-side">
-            <div class="split-bg" style="background-image: url('room_red.jpg');"></div>
-            <div class="split-overlay"></div>
-            <div class="split-content">
-                <span class="vibe-tag">Elegant & Historic</span>
-                <h2>Fine Dining</h2>
-                <span class="btn-text">View Dinner Menu &rarr;</span>
-            </div>
-        </a>
-    </header>
-
     <section class="reviews-bar">
         <div class="container">
-            <p>"A Glen Echo masterpiece. The Corned Beef is legendary." <span class="stars">★★★★★</span> &mdash; <em>Washington Post Mention</em></p>
+            <p>"A Glen Echo masterpiece. The Corned Beef is legendary." <span class="stars">★★★★★</span></p>
         </div>
     </section>
 
@@ -106,11 +80,6 @@
                 Stewarded by the Hughes family, we honor the spirit of the past while delivering authentic Irish hospitality. 
                 Whether you're here for a pint by the fire or a celebration in the Garden Room, you're part of the history.
             </p>
-            <div class="image-grid-3">
-                <img src="room_green.jpg" alt="Garden Room" loading="lazy">
-                <img src="room_porch.jpg" alt="Sun Porch" loading="lazy">
-                <img src="corned_beef.jpg" alt="Signature Dish" loading="lazy">
-            </div>
         </div>
     </section>
 
@@ -129,8 +98,8 @@
             </div>
             <div class="footer-col">
                 <h3>Hours</h3>
-                <p>Mon-Fri: 11am - Close</p>
-                <p>Sat-Sun: 11am - Close</p>
+                <p>Daily: 11am - Close</p>
+                <p>Brunch: Sat & Sun</p>
             </div>
         </div>
         <div class="copyright">
@@ -139,15 +108,9 @@
     </footer>
 
     <div class="mobile-bottom-nav">
-        <a href="menu.html" class="nav-item">
-            <span>🍽️</span> Menu
-        </a>
-        <a href="https://resy.com/cities/dc/the-irish-inn-at-glen-echo" target="_blank" class="nav-item cta">
-            Book Table
-        </a>
-        <a href="events.html" class="nav-item">
-            <span>🎉</span> Events
-        </a>
+        <a href="menu.html" class="nav-item"><span>🍽️</span> Menu</a>
+        <a href="https://resy.com/cities/dc/the-irish-inn-at-glen-echo" target="_blank" class="nav-item cta">Book Table</a>
+        <a href="events.html" class="nav-item"><span>🎉</span> Events</a>
     </div>
 
     <script src="app.js"></script>
