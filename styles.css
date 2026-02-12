@@ -14,130 +14,39 @@
 /* RESET */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 16px; }
-body { background-color: var(--cream); font-family: var(--font-body); color: var(--text-main); line-height: 1.6; padding-bottom: 60px; /* Space for mobile nav */ }
+body { background-color: var(--cream); font-family: var(--font-body); color: var(--text-main); line-height: 1.6; padding-bottom: 70px; }
 
 /* UTILITIES */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .text-center { text-align: center; }
 .section-padding { padding: 5rem 0; }
-.hidden-mobile { display: block; }
-@media(max-width: 768px) { .hidden-mobile { display: none; } }
+.gold-subtitle { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 1rem; }
+.section-title { font-size: 2.5rem; margin-bottom: 1.5rem; }
+.lead-text { max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: #555; }
 
 /* NAVIGATION */
 nav { background: var(--green-dark); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); }
 .nav-inner { display: flex; justify-content: space-between; align-items: center; }
 .logo { color: var(--gold); font-family: var(--font-head); font-size: 1.5rem; text-decoration: none; font-weight: 700; letter-spacing: 1px; }
+.hidden-mobile { display: block; }
 .nav-links { display: flex; list-style: none; gap: 2rem; }
 .nav-links a { color: var(--white); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
 .btn-book { border: 1px solid var(--gold); padding: 5px 15px; color: var(--gold) !important; border-radius: 2px; }
+.menu-toggle { display: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
 
-/* MOBILE BOTTOM NAV (THE CONVERSION ENGINE) */
-.mobile-bottom-nav {
-    display: none;
-    position: fixed; bottom: 0; left: 0; width: 100%;
-    background: white; border-top: 1px solid #eee;
-    z-index: 2000; box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+/* MOBILE DROPDOWN (JS Toggled) */
+.mobile-dropdown {
+    display: none; background: var(--green-dark); position: absolute; top: 100%; left: 0; width: 100%;
+    flex-direction: column; padding: 1rem; text-align: center;
 }
-@media(max-width: 768px) { 
-    .mobile-bottom-nav { display: flex; justify-content: space-around; padding: 10px 0; } 
-}
-.nav-item { text-decoration: none; color: var(--text-muted); font-size: 0.7rem; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.nav-item span { font-size: 1.2rem; margin-bottom: 2px; }
-.nav-item.cta {
-    background: var(--green-dark); color: var(--gold);
-    padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 0.9rem;
-    flex-direction: row; margin-top: 2px;
-}
+.mobile-dropdown.active { display: flex; }
+.mobile-dropdown a { color: white; padding: 10px; text-decoration: none; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-/* Add this to your styles.css */
-
-.split-hero {
-    position: relative; /* Needed for the absolute badge */
-}
-
-/* --- PREMIUM CENTER BADGE --- */
-.hero-center-badge {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    
-    /* The "Physical" Feel */
-    background-color: var(--cream); /* Matches site background, not stark white */
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    
-    /* The "Gold Rim" Effect */
-    border: 1px solid var(--gold);
-    box-shadow: 
-        0 0 0 4px white, /* Inner white ring */
-        0 0 0 5px var(--gold), /* Outer gold thin ring */
-        0 10px 30px rgba(0,0,0,0.3); /* Deep shadow for lift */
-    
-    /* Flexbox for perfect centering */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    
-    /* Animation */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover Effect: It lifts up slightly */
-.hero-center-badge:hover {
-    transform: translate(-50%, -55%);
-    box-shadow: 
-        0 0 0 4px white,
-        0 0 0 5px var(--gold),
-        0 20px 40px rgba(0,0,0,0.4);
-}
-
-/* Typography inside the badge */
-.hero-center-badge span:first-child {
-    font-family: var(--font-body);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-muted);
-    margin-bottom: 5px;
-}
-
-.hero-center-badge span:last-child {
-    font-family: var(--font-head);
-    font-size: 1.1rem; /* Larger for 'Both Spaces' */
-    font-style: italic;
-    color: var(--green-dark);
-    line-height: 1.1;
-}
-
-/* Decorative Divider */
-.hero-center-badge::after {
-    content: '';
-    width: 30px;
-    height: 1px;
-    background: var(--gold);
-    margin: 5px auto 0;
-    display: block;
-}
-
-/* Mobile: Hide it */
-@media (max-width: 768px) {
-    .hero-center-badge { display: none; }
-}
-
-
-/* Hide the badge on mobile because the screen is too small */
-@media (max-width: 768px) {
-    .hero-center-badge { display: none; }
-}
-
-/* HERO SECTIONS */
-.split-hero { display: flex; height: 85vh; width: 100%; }
+/* SPLIT HERO */
+.split-hero { position: relative; display: flex; height: 85vh; width: 100%; }
 .split-side { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; text-decoration: none; border-right: 1px solid rgba(255,255,255,0.2); overflow: hidden; }
+.split-side:hover { flex: 1.5; transition: flex 0.6s ease; }
 .split-bg { position: absolute; top:0; left:0; width:100%; height:100%; background-size: cover; background-position: center; transition: transform 0.6s ease; }
 .split-side:hover .split-bg { transform: scale(1.1); }
 .split-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)); }
@@ -146,9 +55,28 @@ nav { background: var(--green-dark); padding: 1rem 0; position: sticky; top: 0; 
 .split-content h2 { font-family: var(--font-head); font-size: 3rem; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 .btn-text { font-size: 0.9rem; text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 3px; }
 
-.reviews-bar { background: var(--gold); color: var(--green-dark); text-align: center; padding: 10px; font-weight: 700; font-size: 0.9rem; }
+/* PREMIUM BADGE */
+.hero-center-badge {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10;
+    background-color: var(--cream); width: 150px; height: 150px; border-radius: 50%;
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 0 4px white, 0 0 0 5px var(--gold), 0 10px 30px rgba(0,0,0,0.3);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hero-center-badge:hover { transform: translate(-50%, -55%); box-shadow: 0 0 0 4px white, 0 0 0 5px var(--gold), 0 20px 40px rgba(0,0,0,0.4); }
+.hero-center-badge span:first-child { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 5px; }
+.hero-center-badge span:last-child { font-family: var(--font-head); font-size: 1.1rem; font-style: italic; color: var(--green-dark); line-height: 1.1; }
+.hero-center-badge::after { content: ''; width: 30px; height: 1px; background: var(--gold); margin: 5px auto 0; display: block; }
 
-/* MENU GRID */
+/* REVIEWS & PAGE HERO */
+.reviews-bar { background: var(--gold); color: var(--green-dark); text-align: center; padding: 10px; font-weight: 700; font-size: 0.9rem; }
+.page-hero { height: 40vh; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
+.hero-text { position: relative; z-index: 2; color: var(--white); padding: 0 20px; }
+.hero-text h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
+
+/* MENU SYSTEM */
 #sticky-nav-container { background: white; position: sticky; top: 70px; z-index: 900; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 10px 0; }
 .filter-row { display: flex; justify-content: space-between; align-items: center; overflow-x: auto; gap: 1rem; }
 .category-list { display: flex; list-style: none; gap: 1.5rem; white-space: nowrap; }
@@ -157,7 +85,6 @@ nav { background: var(--green-dark); padding: 1rem 0; position: sticky; top: 0; 
 .dietary-toggles { display: flex; gap: 10px; }
 .toggle-btn { background: none; border: 1px solid #ccc; padding: 5px 10px; border-radius: 15px; cursor: pointer; font-size: 0.8rem; }
 .toggle-btn.active { background: var(--green-dark); color: white; border-color: var(--green-dark); }
-
 .menu-section { margin: 3rem 0; border-bottom: 1px solid #eee; padding-bottom: 2rem; }
 .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 1.5rem; }
 .menu-item { display: flex; gap: 1rem; align-items: flex-start; }
@@ -176,84 +103,38 @@ nav { background: var(--green-dark); padding: 1rem 0; position: sticky; top: 0; 
 .room-image { height: 250px; background-size: cover; background-position: center; position: relative; }
 .room-badge { position: absolute; top: 15px; left: 15px; background: white; padding: 5px 10px; font-size: 0.8rem; font-weight: 700; border-radius: 4px; color: var(--green-dark); }
 .room-content { padding: 1.5rem; }
-.room-content h3 { color: var(--green-dark); margin-bottom: 5px; }
 .room-code { color: var(--gold); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; display: block; }
 .features-list { list-style: none; margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted); }
 .features-list li::before { content: "• "; color: var(--gold); }
 
-/* FOOTER */
+/* FORMS & FOOTER */
+.inquiry-section { padding: 5rem 20px; background: var(--green-dark); color: white; }
+.form-box { background: white; padding: 3rem; border-radius: 4px; max-width: 700px; margin: 0 auto; color: var(--text-main); }
+.form-group { margin-bottom: 1.5rem; }
+.form-row { display: flex; gap: 1rem; }
+.form-row .form-group { flex: 1; }
+.event-form label { display: block; margin-bottom: 0.5rem; font-weight: 700; font-size: 0.9rem; color: var(--green-dark); }
+.event-form input, .event-form select, .event-form textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 2px; font-family: var(--font-body); }
+.btn-submit { width: 100%; padding: 1rem; background: var(--gold); color: var(--green-dark); border: none; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
 footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-top: 4rem; text-align: center; }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
 .status-indicator { margin-top: 10px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 20px; }
 #status-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; display: inline-block; }
-.copyright { margin-top: 2rem; font-size: 0.8rem; opacity: 0.6; }
 
-@media(max-width: 768px) {
-    .split-hero { flex-direction: column; height: auto; }
-    .split-side { height: 50vh; }
-    .nav-links { display: none; } 
-    /* Mobile nav handles navigation now */
-}
+/* MOBILE BOTTOM NAV */
+.mobile-bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: white; border-top: 1px solid #eee; z-index: 2000; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
+.nav-item { text-decoration: none; color: var(--text-muted); font-size: 0.7rem; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px; flex: 1; }
+.nav-item span { font-size: 1.2rem; margin-bottom: 2px; }
+.nav-item.cta { background: var(--green-dark); color: var(--gold); padding: 8px; border-radius: 5px; margin: 5px; font-weight: 700; font-size: 0.9rem; flex-direction: row; flex: 1.5; }
 
-/* --- TABLET & SMALL LAPTOP FIXES (769px - 1024px) --- */
+/* RESPONSIVE (TABLET/MOBILE) */
 @media screen and (max-width: 1024px) {
-    
-    /* 1. FORCE HAMBURGER MENU EARLIER */
-    /* Desktop nav gets crowded on tablets, so we switch to mobile menu */
     .hidden-mobile { display: none; }
-    .nav-links { 
-        display: none; /* Hidden by default, toggled via JS */
-        position: absolute; 
-        top: 60px; 
-        right: 0; 
-        width: 100%; 
-        background: var(--green-dark); 
-        flex-direction: column; 
-        text-align: center; 
-        padding: 2rem; 
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .nav-links.active { display: flex; }
-    .menu-toggle { display: block; margin-right: 20px; }
-
-    /* 2. SPLIT HERO STACKING */
-    /* Side-by-side looks squished on portrait tablets. We stack them. */
+    .menu-toggle { display: block; }
     .split-hero { flex-direction: column; height: auto; }
-    .split-side { 
-        height: 50vh; /* Each side takes half the screen height */
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    /* 3. CENTER BADGE ADJUSTMENT */
-    /* Scale down the center badge or hide it if it covers too much */
-    .hero-center-badge {
-        width: 120px;
-        height: 120px;
-        font-size: 0.8rem;
-        padding: 1rem;
-    }
-
-    /* 4. ROOM SHOWCASE & MENUS */
-    /* Stop columns from being too narrow */
-    .room-row, .room-row.reverse { flex-direction: column; }
-    .room-image { width: 100%; height: 350px; min-width: auto; }
-    .room-details { padding: 3rem 2rem; }
-    
-    .menu-grid {
-        grid-template-columns: 1fr; /* Force single column for better readability */
-    }
-
-    /* 5. TEXT SIZING */
-    .hero-text h1 { font-size: 3rem; }
-    .section-title { font-size: 2rem; }
-    
-    /* 6. BOTTOM NAV VISIBILITY */
-    /* Ensure the "App-like" bottom bar appears on tablets too */
-    .mobile-bottom-nav { display: flex; justify-content: space-around; }
-    
-    /* Add padding to body so bottom nav doesn't cover content */
-    body { padding-bottom: 80px; }
+    .split-side { height: 50vh; width: 100%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    .hero-center-badge { width: 120px; height: 120px; font-size: 0.8rem; }
+    .room-image { width: 100%; height: 350px; }
+    .mobile-bottom-nav { display: flex; }
+    .menu-grid { grid-template-columns: 1fr; }
 }
-
