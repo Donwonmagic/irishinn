@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menus | The Irish Inn at Glen Echo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">THE IRISH INN</a>
+            <div class="hidden-mobile">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">Story</a></li>
+                    <li><a href="menu.html" class="active">Menus</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="https://resy.com/cities/dc/the-irish-inn-at-glen-echo" target="_blank" class="btn-book">Book Table</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="sticky-nav-container">
+        <div class="container">
+            <div class="filter-row">
+                <ul class="category-list">
+                    <li class="active" data-target="all">All</li>
+                    <li data-target="small-plates">Small Plates</li>
+                    <li data-target="salads">Salads</li>
+                    <li data-target="handhelds">Handhelds</li>
+                    <li data-target="signatures">Signatures</li>
+                    <li data-target="entrees">Entrées</li>
+                </ul>
+                <div class="dietary-toggles">
+                    <button class="toggle-btn" data-filter="gf">GF Only</button>
+                    <button class="toggle-btn" data-filter="v">Veg Only</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container menu-body">
+        <div id="menu-content" class="fade-in-up">
+            </div>
+        
+        <div class="disclaimer">
+            <p>* Consuming raw or undercooked meats may increase risk of foodborne illness.</p>
+        </div>
+    </main>
+
+    <div class="mobile-bottom-nav">
+        <a href="index.html" class="nav-item"><span>🏠</span> Home</a>
+        <a href="https://resy.com/cities/dc/the-irish-inn-at-glen-echo" target="_blank" class="nav-item cta">Book Table</a>
+        <a href="events.html" class="nav-item"><span>🎉</span> Events</a>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
