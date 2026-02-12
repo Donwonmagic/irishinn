@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Irish Inn at Glen Echo | Historic Charm, Modern Spirit</title>
+    <meta name="description" content="A historic dining destination in Glen Echo, MD. Upscale Irish cuisine, lively pub atmosphere, and premier private event spaces.">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "The Irish Inn at Glen Echo",
+      "image": "https://irishinnglenecho.com/logo.png",
+      "telephone": "+13012296600",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "6119 Tulane Ave",
+        "addressLocality": "Glen Echo",
+        "addressRegion": "MD",
+        "postalCode": "20812"
+      },
+      "priceRange": "$$",
+      "servesCuisine": "Irish",
+      "acceptsReservations": "true",
+      "url": "https://irishinnglenecho.com"
+    }
+    </script>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">THE IRISH INN</a>
+            <div class="hidden-mobile">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="#about">Story</a></li>
+                    <li><a href="menu.html">Menus</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="https://resy.com/cities/dc/the-irish-inn-at-glen-echo" target="_blank" class="btn-book">Book Table</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="split-hero">
+        <a href="menu.html#handhelds" class="split-side pub-side">
+            <div class="split-bg" style="background-image: url('bar_red.jpg');"></div>
+            <div class="split-overlay"></div>
+            <div class="split-content">
+                <span class="vibe-tag">Casual & Lively</span>
+                <h2>The Pub</h2>
+                <span class="btn-text">View Pub Menu &rarr;</span>
+            </div>
+        </a>
+        <a href="menu.html#entrees" class="split-side dining-side">
+            <div class="split-bg" style="background-image: url('room_red.jpg');"></div>
+            <div class="split-overlay"></div>
+            <div class="split-content">
+                <span class="vibe-tag">Elegant & Historic</span>
+                <h2>Fine Dining</h2>
+                <span class="btn-text">View Dinner Menu &rarr;</span>
+            </div>
+        </a>
+    </header>
+
+    <section class="reviews-bar">
+        <div class="container">
+            <p>"A Glen Echo masterpiece. The Corned Beef is legendary." <span class="stars">★★★★★</span> &mdash; <em>Washington Post Mention</em></p>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding text-center">
+        <div class="container">
+            <span class="gold-subtitle">Est. 1931 &bull; Reborn 2003</span>
+            <h2 class="section-title">A Roadhouse Reimagined</h2>
+            <p class="lead-text">
+                Stewarded by the Hughes family, we honor the spirit of the past while delivering authentic Irish hospitality. 
+                Whether you're here for a pint by the fire or a celebration in the Garden Room, you're part of the history.
+            </p>
+            <div class="image-grid-3">
+                <img src="room_green.jpg" alt="Garden Room" loading="lazy">
+                <img src="room_porch.jpg" alt="Sun Porch" loading="lazy">
+                <img src="corned_beef.jpg" alt="Signature Dish" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>The Irish Inn</h3>
+                <p>6119 Tulane Ave<br>Glen Echo, MD 20812</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p><a href="tel:3012296600">(301) 229-6600</a></p>
+                <div class="status-indicator">
+                    <span id="status-dot"></span> <span id="status-text">Checking hours...</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Hours</h3>
+                <p>Mon-Fri: 11am - Close</p>
+                <p>Sat-Sun: 11am - Close</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="year"></span> The Irish Inn at Glen Echo.
+        </div>
+    </footer>
+
+    <div class="mobile-bottom-nav">
+        <a href="menu.html" class="nav-item">
+            <span>🍽️</span> Menu
+        </a>
+        <a href="https://resy.com/cities/dc/the-irish-inn-at-glen-echo" target="_blank" class="nav-item cta">
+            Book Table
+        </a>
+        <a href="events.html" class="nav-item">
+            <span>🎉</span> Events
+        </a>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
