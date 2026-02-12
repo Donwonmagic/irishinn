@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Events | The Irish Inn at Glen Echo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">THE IRISH INN</a>
+            <div class="hidden-mobile">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menus</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="https://resy.com/cities/dc/the-irish-inn-at-glen-echo" target="_blank" class="btn-book">Book Table</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-hero" style="background-image: url('room_green.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <h1>Host Your Occasion</h1>
+            <p>From the Historic Upstairs to the Garden Gallery.</p>
+        </div>
+    </header>
+
+    <section class="container section-padding text-center">
+        <h2 class="section-title">Select Your Setting</h2>
+        <p class="lead-text">We offer distinct atmospheres tailored to your event's vibe. Choose between the gallery-style elegance of the Main Floor or the historic warmth of the Upstairs Suite.</p>
+    </section>
+
+    <section class="room-showcase">
+        
+        <div class="room-card">
+            <div class="room-image" style="background-image: url('room_green.jpg');">
+                <span class="room-badge">Main Floor</span>
+            </div>
+            <div class="room-content">
+                <h3>The Garden Gallery</h3>
+                <p class="room-code">Rooms F & G</p>
+                <p>Sage green walls, eclectic framed art, and a bright, airy "Country Club" feel. Perfect for luncheons and bridal showers.</p>
+                <ul class="features-list">
+                    <li>Capacity: 30-60 Guests</li>
+                    <li>Round/Square Tables</li>
+                    <li>Natural Light</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="room-card">
+            <div class="room-image" style="background-image: url('room_red.jpg');">
+                <span class="room-badge">Upstairs</span>
+            </div>
+            <div class="room-content">
+                <h3>The Historic Suite</h3>
+                <p class="room-code">Rooms C & D</p>
+                <p>Deep maroon walls, white linens, and original 1930s architecture. A formal, intimate setting for rehearsal dinners.</p>
+                <ul class="features-list">
+                    <li>Capacity: 20-40 Guests</li>
+                    <li>Private Floor</li>
+                    <li>Formal Atmosphere</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="room-card">
+            <div class="room-image" style="background-image: url('room_porch.jpg');">
+                <span class="room-badge">Semi-Private</span>
+            </div>
+            <div class="room-content">
+                <h3>The Sun Porch</h3>
+                <p class="room-code">Porch Annex</p>
+                <p>A narrow, cozy nook with a fireplace and red-checkered accents. Ideal for small family gatherings.</p>
+                <ul class="features-list">
+                    <li>Capacity: 10-16 Guests</li>
+                    <li>Fireplace</li>
+                    <li>Cozy & Tucked Away</li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="inquiry-section">
+        <div class="container">
+            <div class="form-box">
+                <h2>Start Planning</h2>
+                <form class="event-form">
+                    <div class="form-row">
+                        <div class="form-group"><label>Name</label><input type="text"></div>
+                        <div class="form-group"><label>Email</label><input type="email"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Preferred Space</label>
+                            <select>
+                                <option>Garden Gallery (Green)</option>
+                                <option>Historic Suite (Red)</option>
+                                <option>Sun Porch</option>
+                                <option>Pub / Patio</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Guests</label><input type="number"></div>
+                    </div>
+                    <div class="form-group"><label>Details</label><textarea rows="3"></textarea></div>
+                    <button type="submit" class="btn-submit">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="mobile-bottom-nav">
+        <a href="index.html" class="nav-item"><span>🏠</span> Home</a>
+        <a href="https://resy.com/cities/dc/the-irish-inn-at-glen-echo" target="_blank" class="nav-item cta">Book Table</a>
+        <a href="menu.html" class="nav-item"><span>🍽️</span> Menu</a>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
