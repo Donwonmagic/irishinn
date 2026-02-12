@@ -55,30 +55,80 @@ nav { background: var(--green-dark); padding: 1rem 0; position: sticky; top: 0; 
     position: relative; /* Needed for the absolute badge */
 }
 
+/* --- PREMIUM CENTER BADGE --- */
 .hero-center-badge {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    background: white;
-    padding: 1rem 2rem;
-    text-align: center;
-    border-radius: 50%; /* Makes it a circle/oval */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    font-family: var(--font-head);
-    color: var(--green-dark);
-    font-weight: 700;
-    font-size: 0.9rem;
-    border: 4px solid var(--cream); /* Double border effect */
-    width: 160px;
-    height: 160px;
+    
+    /* The "Physical" Feel */
+    background-color: var(--cream); /* Matches site background, not stark white */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    
+    /* The "Gold Rim" Effect */
+    border: 1px solid var(--gold);
+    box-shadow: 
+        0 0 0 4px white, /* Inner white ring */
+        0 0 0 5px var(--gold), /* Outer gold thin ring */
+        0 10px 30px rgba(0,0,0,0.3); /* Deep shadow for lift */
+    
+    /* Flexbox for perfect centering */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    line-height: 1.3;
+    text-align: center;
+    
+    /* Animation */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* Hover Effect: It lifts up slightly */
+.hero-center-badge:hover {
+    transform: translate(-50%, -55%);
+    box-shadow: 
+        0 0 0 4px white,
+        0 0 0 5px var(--gold),
+        0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Typography inside the badge */
+.hero-center-badge span:first-child {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.hero-center-badge span:last-child {
+    font-family: var(--font-head);
+    font-size: 1.1rem; /* Larger for 'Both Spaces' */
+    font-style: italic;
+    color: var(--green-dark);
+    line-height: 1.1;
+}
+
+/* Decorative Divider */
+.hero-center-badge::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    margin: 5px auto 0;
+    display: block;
+}
+
+/* Mobile: Hide it */
+@media (max-width: 768px) {
+    .hero-center-badge { display: none; }
+}
+
 
 /* Hide the badge on mobile because the screen is too small */
 @media (max-width: 768px) {
