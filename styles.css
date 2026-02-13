@@ -380,3 +380,36 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
     color: #aaa;
     text-decoration: underline;
 }
+
+/* --- POLICY PAGES (Accessibility / Privacy) --- */
+.policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.policy-content h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--green-dark);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.policy-content p, .policy-content li {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    line-height: 1.8; /* Increased line-height for readability */
+}
+
+.policy-content a {
+    color: var(--green-dark);
+    font-weight: 700;
+    text-decoration: underline;
+}
