@@ -35,7 +35,7 @@ nav { background: var(--green-dark); padding: 1rem 0; position: sticky; top: 0; 
 .btn-book { border: 1px solid var(--gold); padding: 5px 15px; color: var(--gold) !important; border-radius: 2px; }
 .menu-toggle { display: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
 
-/* MOBILE DROPDOWN (JS Toggled) */
+/* MOBILE DROPDOWN */
 .mobile-dropdown {
     display: none; background: var(--green-dark); position: absolute; top: 100%; left: 0; width: 100%;
     flex-direction: column; padding: 1rem; text-align: center;
@@ -43,22 +43,24 @@ nav { background: var(--green-dark); padding: 1rem 0; position: sticky; top: 0; 
 .mobile-dropdown.active { display: flex; }
 .mobile-dropdown a { color: white; padding: 10px; text-decoration: none; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-/* --- ROBUST SPLIT HERO (Collision-Proof) --- */
+/* --- COLLISION-PROOF HERO --- */
 .split-hero { position: relative; display: flex; height: 85vh; width: 100%; overflow: hidden; }
 .split-side { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; text-decoration: none; border-right: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
 .split-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
 .split-side:hover .split-bg { transform: scale(1.08); }
 .split-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%); z-index: 1; }
 .split-content { position: relative; z-index: 2; text-align: center; color: white; max-width: 80%; transition: transform 0.4s ease; }
-/* Safe Zones */
+
+/* SAFE ZONES (Desktop) */
 .pub-side .split-content { padding-right: 60px; }
 .dining-side .split-content { padding-left: 60px; }
+
 .vibe-tag { display: inline-block; background: var(--gold); color: var(--green-dark); padding: 4px 12px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem; border-radius: 2px; }
 .split-content h2 { font-family: var(--font-head); font-size: 4rem; margin-bottom: 1.5rem; line-height: 1; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
 .btn-text { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid var(--gold); padding-bottom: 5px; transition: color 0.3s; }
 .split-side:hover .btn-text { color: var(--gold); }
 
-/* --- PREMIUM CENTER BADGE --- */
+/* PREMIUM BADGE */
 .hero-center-badge {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;
     background-color: var(--cream); width: 160px; height: 160px; border-radius: 50%;
@@ -70,7 +72,7 @@ nav { background: var(--green-dark); padding: 1rem 0; position: sticky; top: 0; 
 .hero-center-badge span:last-child { font-family: var(--font-head); font-size: 1.3rem; font-style: italic; color: var(--green-dark); line-height: 1.1; }
 .hero-center-badge::after { content: ''; width: 40px; height: 2px; background: var(--gold); margin: 8px auto 0; display: block; }
 
-/* SOURCING BAR */
+/* SOURCING BAR (Authority) */
 .sourcing-bar { background-color: var(--white); border-bottom: 1px solid #eee; padding: 3rem 0; }
 .sourcing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center; }
 .source-item .icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
@@ -154,9 +156,10 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
     .split-hero { flex-direction: column; height: auto; }
     .split-side { width: 100%; height: 60vh; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
     
-    /* Mobile/Tablet Safe Zones */
-    .pub-side .split-content { padding-right: 0; transform: translateY(-40px); }
-    .dining-side .split-content { padding-left: 0; transform: translateY(40px); }
+    /* MOBILE/TABLET SAFE ZONES (The Fix) */
+    .pub-side .split-content { padding-right: 0; transform: translateY(-40px); } /* Move UP */
+    .dining-side .split-content { padding-left: 0; transform: translateY(40px); } /* Move DOWN */
+    
     .hero-center-badge { width: 140px; height: 140px; }
     .split-content h2 { font-size: 3rem; }
     
