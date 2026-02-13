@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 3. MENU DATA & FILTERING ---
     const menuContainer = document.getElementById('menu-content');
     if (menuContainer) {
-        // FULL DATA FROM UPLOADED PDF
+        // DATA FROM PDFS
         const menuData = [
             {
                 category: "small-plates",
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        renderMenu(); // Init
+        renderMenu();
 
         // Filtering
         document.querySelectorAll('.toggle-btn').forEach(btn => {
