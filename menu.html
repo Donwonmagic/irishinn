@@ -47,6 +47,23 @@
 
     <div id="sticky-nav-container">
         <div class="container">
+            
+            <div class="allergen-row">
+                <span class="filter-label">Dietary Filters:</span>
+                <button class="allergen-btn" onclick="toggleFilter('gf')" id="btn-gf">
+                    <span class="icon">🚫🌾</span> Gluten Free
+                </button>
+                <button class="allergen-btn" onclick="toggleFilter('df')" id="btn-df">
+                    <span class="icon">🚫🥛</span> Dairy Free
+                </button>
+                <button class="allergen-btn" onclick="toggleFilter('nf')" id="btn-nf">
+                    <span class="icon">🚫🥜</span> Nut Free
+                </button>
+                <button class="allergen-btn" onclick="toggleFilter('v')" id="btn-v">
+                    <span class="icon">🥬</span> Vegetarian
+                </button>
+            </div>
+
             <ul class="category-list" id="category-nav">
                 </ul>
         </div>
@@ -58,6 +75,7 @@
         
         <div class="disclaimer">
             <p>* Consuming raw or undercooked meats may increase risk of foodborne illness.</p>
+            <p>** While we offer dietary-friendly options, our kitchen handles gluten, nuts, and dairy. Please inform your server of severe allergies.</p>
         </div>
     </main>
 
@@ -80,7 +98,7 @@
 
     <div class="mobile-bottom-nav">
         <a href="index.html" class="nav-item"><span>🏠</span> Home</a>
-        <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank" class="btn-book">Book Table</a>
+        <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank" class="nav-item cta">Book Table</a>
         <a href="events.html" class="nav-item"><span>📅</span> Events</a>
     </div>
 
