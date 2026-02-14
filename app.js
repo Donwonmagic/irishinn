@@ -1,12 +1,9 @@
-/* MASTER APP.JS - THE IRISH INN AT GLEN ECHO
-   Contains logic for: Global Nav, Menu System, Live Status, and Event Forms.
-*/
+// --- MASTER APP.JS ---
 
-// --- GLOBAL VARIABLES ---
+// GLOBAL DATA
 let currentMenu = 'allday';
-let activeFilters = []; // Stores selected tags: ['gf', 'df', 'nf', 'v']
+let activeFilters = []; 
 
-// --- MENU DATA BANK ---
 const MENUS = {
     allday: [
         {
@@ -100,13 +97,9 @@ const MENUS = {
     ]
 };
 
-// --- CORE FUNCTIONS ---
-
-// 1. Toggle Dietary Filters
+// --- LOGIC ---
 window.toggleFilter = function(tag) {
     const btn = document.getElementById(`btn-${tag}`);
-    
-    // Toggle state in array
     if (activeFilters.includes(tag)) {
         activeFilters = activeFilters.filter(f => f !== tag);
         btn.classList.remove('active');
@@ -114,63 +107,40 @@ window.toggleFilter = function(tag) {
         activeFilters.push(tag);
         btn.classList.add('active');
     }
-    
-    // Refresh the view
     renderMenu(currentMenu);
 };
 
-// 2. Switch Menu Modes (All Day vs Brunch)
 window.switchMenu = function(menuType) {
     currentMenu = menuType;
-    
-    // Visual Update for Buttons
     document.querySelectorAll('.menu-switch-btn').forEach(btn => btn.classList.remove('active'));
-    
-    if(menuType === 'allday') {
-        const btn = document.querySelector('button[onclick="switchMenu(\'allday\')"]');
-        if(btn) btn.classList.add('active');
-    }
-    if(menuType === 'brunch') {
-        const btn = document.querySelector('button[onclick="switchMenu(\'brunch\')"]');
-        if(btn) btn.classList.add('active');
-    }
-
+    if(menuType === 'allday') document.querySelector('button[onclick="switchMenu(\'allday\')"]').classList.add('active');
+    if(menuType === 'brunch') document.querySelector('button[onclick="switchMenu(\'brunch\')"]').classList.add('active');
     renderMenu(menuType);
 };
 
-// 3. Render the Grid
 function renderMenu(menuType) {
     const content = document.getElementById('menu-content');
     const navList = document.getElementById('category-nav');
+    if(!content) return;
     
-    // Safety check: if we aren't on the menu page, stop.
-    if (!content || !navList) return;
-
     const data = MENUS[menuType];
     content.innerHTML = '';
     navList.innerHTML = '';
-
-    let hasVisibleItems = false;
-
+    
     data.forEach(section => {
-        // FILTERING LOGIC: Item must match ALL active tags
         const visibleItems = section.items.filter(item => {
             if (activeFilters.length === 0) return true;
             return activeFilters.every(filter => item.tags.includes(filter));
         });
 
         if (visibleItems.length > 0) {
-            hasVisibleItems = true;
-
-            // A. Populate Sticky Nav
             const li = document.createElement('li');
-            li.textContent = section.title.split(' ')[0]; // Shorten title
+            li.textContent = section.title.split(' ')[0];
             if(section.id === 'brunch-specials') li.textContent = "Specials";
             if(section.id === 'brunch-lunch') li.textContent = "Lunch";
             li.onclick = () => document.getElementById(section.id).scrollIntoView({behavior: "smooth", block: "start"});
             navList.appendChild(li);
 
-            // B. Build Section HTML
             const sectionDiv = document.createElement('section');
             sectionDiv.id = section.id;
             sectionDiv.className = 'menu-section';
@@ -180,7 +150,6 @@ function renderMenu(menuType) {
             grid.className = 'menu-grid';
 
             visibleItems.forEach(item => {
-                // Generate badges
                 const labels = { 'gf': 'GF', 'df': 'DF', 'nf': 'NF', 'v': 'Veg' };
                 const iconsHtml = item.tags
                     .filter(t => labels[t])
@@ -203,107 +172,53 @@ function renderMenu(menuType) {
                     </div>
                 `;
             });
-
             sectionDiv.appendChild(grid);
             content.appendChild(sectionDiv);
         }
     });
 
-    // Empty State Handling
-    if (!hasVisibleItems) {
-        content.innerHTML = `
-            <div class="text-center" style="padding: 4rem; grid-column: 1/-1;">
-                <h3>No items match your filters.</h3>
-                <p>Try removing some dietary restrictions to see more options.</p>
-                <button onclick="activeFilters=[]; renderMenu('${menuType}'); document.querySelectorAll('.allergen-btn').forEach(b=>b.classList.remove('active'))" 
-                        style="margin-top:1rem; padding:10px 20px; cursor:pointer; background:var(--green-dark); color:white; border:none;">
-                    Clear Filters
-                </button>
-            </div>`;
+    if (content.innerHTML === '') {
+        content.innerHTML = `<div class="text-center" style="padding: 4rem;"><h3>No items match your filters.</h3><button onclick="activeFilters=[]; renderMenu('${menuType}'); document.querySelectorAll('.allergen-btn').forEach(b=>b.classList.remove('active'))" style="margin-top:1rem; padding:10px 20px; cursor:pointer;">Clear Filters</button></div>`;
     }
 }
 
-// --- INITIALIZATION ---
+// INIT
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Footer Year
     const yearSpan = document.getElementById('year');
     if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    // 2. Live Status Logic (Open/Closed)
     const statusDot = document.getElementById('status-dot');
     const statusText = document.getElementById('status-text');
-    
     if (statusDot) {
         const now = new Date();
-        const day = now.getDay(); // 0=Sun, 6=Sat
         const hour = now.getHours();
-        const minutes = now.getMinutes();
-        const timeFloat = hour + (minutes / 60);
-
-        // Hours: 11am to 10pm daily
-        let isOpen = false;
-        let statusMsg = "Closed (Opens 11am)";
-
-        if (timeFloat >= 11 && timeFloat < 22) {
-            isOpen = true;
-            statusMsg = "Open Now";
-            // Brunch Check: Sat/Sun 11am-2:30pm
-            if ((day === 0 || day === 6) && timeFloat < 14.5) {
-                statusMsg = "Serving Brunch Now";
-            }
-        }
-
+        const isOpen = hour >= 11 && hour < 22; 
         if (isOpen) {
-            statusDot.style.background = '#4caf50'; // Green
-            statusText.textContent = statusMsg;
+            statusDot.style.background = '#4caf50'; statusText.textContent = "Open Now";
         } else {
-            statusDot.style.background = '#f44336'; // Red
-            statusText.textContent = statusMsg;
+            statusDot.style.background = '#f44336'; statusText.textContent = "Closed";
         }
     }
 
-    // 3. Mobile Hamburger Menu
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileDropdown = document.getElementById('mobile-dropdown');
-    if(menuBtn){
-        menuBtn.addEventListener('click', () => {
-            mobileDropdown.classList.toggle('active');
-        });
-    }
+    if(menuBtn) menuBtn.addEventListener('click', () => mobileDropdown.classList.toggle('active'));
 
-    // 4. Events Page Form Handling
     const eventForm = document.querySelector('.event-form');
     if (eventForm) {
         eventForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Stop page reload
-            // In a real site, this would send data to a server.
-            // For now, we show a success message.
+            e.preventDefault();
             const btn = eventForm.querySelector('.btn-submit');
-            const originalText = btn.textContent;
-            
             btn.textContent = "Request Sent! ✓";
             btn.style.backgroundColor = "#4caf50";
-            btn.disabled = true;
-
-            setTimeout(() => {
-                eventForm.reset();
-                btn.textContent = originalText;
-                btn.style.backgroundColor = ""; // Reset to CSS default
-                btn.disabled = false;
-                alert("Thank you! Your event inquiry has been sent. We will contact you shortly.");
-            }, 1000);
+            setTimeout(() => { eventForm.reset(); btn.textContent = "Submit Request"; btn.style.backgroundColor = ""; }, 2000);
         });
     }
 
-    // 5. Menu Page Initialization
-    // Check if we are on the menu page by looking for the content container
     if(document.getElementById('menu-content')) {
         const now = new Date();
         const day = now.getDay();
         const hour = now.getHours();
-        
-        // Smart Default: If it's Sat/Sun between 11am and 3pm, show Brunch first.
         if ((day === 0 || day === 6) && (hour >= 11 && hour < 15)) {
             switchMenu('brunch');
         } else {
