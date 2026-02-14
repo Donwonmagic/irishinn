@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,29 +30,32 @@
         </div>
     </nav>
 
+    <header class="page-hero" style="background-image: url('bar_red.jpg'); height: 30vh;">
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <h1>Our Menus</h1>
+            <p>Authentic Irish Fare & Modern Classics</p>
+        </div>
+    </header>
+
+    <div class="menu-switcher-container">
+        <button class="menu-switch-btn active" onclick="switchMenu('allday')">All-Day Menu</button>
+        <button class="menu-switch-btn" onclick="switchMenu('brunch')">
+            Weekend Brunch <span class="time-badge">Sat/Sun</span>
+        </button>
+    </div>
+
     <div id="sticky-nav-container">
         <div class="container">
-            <div class="filter-row">
-                <ul class="category-list">
-                    <li data-target="brunch" id="brunch-tab">Brunch <span class="time-badge">Sat/Sun</span></li>
-                    <li class="active" data-target="all">All</li>
-                    <li data-target="small-plates">Small Plates</li>
-                    <li data-target="salads">Salads</li>
-                    <li data-target="handhelds">Handhelds</li>
-                    <li data-target="signatures">Signatures</li>
-                    <li data-target="entrees">Entrées</li>
+            <ul class="category-list" id="category-nav">
                 </ul>
-                <div class="dietary-toggles">
-                    <button class="toggle-btn" data-filter="gf">GF</button>
-                    <button class="toggle-btn" data-filter="v">Veg</button>
-                </div>
-            </div>
         </div>
     </div>
 
     <main class="container menu-body">
         <div id="menu-content" class="fade-in-up">
             </div>
+        
         <div class="disclaimer">
             <p>* Consuming raw or undercooked meats may increase risk of foodborne illness.</p>
         </div>
