@@ -589,13 +589,13 @@ function checkStatus() {
 
     if (day >= 1 && day <= 4) { 
         // Monday - Thursday
-        if (time >= 11.5 && time < 21.5) isOpen = true;
+        if (time >= 11.5 && time < 12.5) isOpen = true;
     } else if (day === 5 || day === 6) { 
         // Friday - Saturday
-        if (time >= 11.5 && time < 22.5) isOpen = true;
+        if (time >= 11.5 && time < 21.5) isOpen = true;
     } else { 
         // Sunday
-        if (time >= 11.0 && time < 21.5) isOpen = true;
+        if (time >= 11.0 && time < 21.0) isOpen = true;
     }
 
     // UPDATE THE DOM
