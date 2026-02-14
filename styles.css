@@ -363,7 +363,7 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 .nav-item.cta { background: var(--green-dark); color: var(--gold); padding: 8px; border-radius: 5px; margin: 5px; font-weight: 700; font-size: 0.9rem; flex-direction: row; flex: 1.5; box-shadow: 0 4px 8px rgba(18, 56, 33, 0.2); transition: transform 0.2s; }
 .nav-item.cta:active { transform: scale(0.98); }
 
-/* --- RESPONSIVE & MOBILE FIXES (Cinematic Stack) --- */
+ /* --- RESPONSIVE & MOBILE FIXES (Final Polish) --- */
 @media screen and (max-width: 1024px) {
     
     /* 1. HIDE DESKTOP NAV */
@@ -376,54 +376,77 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
         flex-direction: column;
         height: auto; 
         margin-top: -1px;
-        background: var(--cream); /* Fills the gap behind badge */
+        background: var(--cream);
     }
 
-    /* 3. THE "SEAL" BADGE (Fixed Width & Elegant) */
+    /* 3. THE "VICTORIAN" BADGE (Visually Complex) */
     .hero-center-badge {
         position: relative;
         transform: none;
         left: auto; top: auto;
-        order: 2; 
+        order: 2; /* Sits between photos */
         
-        /* Box Styling */
-        width: 80%; /* Not too wide */
-        max-width: 300px; /* Never gets huge */
-        margin: -25px auto; /* Pulls it UP to overlap nicely */
+        /* Layout & Spacing */
+        width: 85%;
+        max-width: 320px;
+        margin: -30px auto; /* Overlaps both photos significantly */
         height: auto;
-        
-        background: var(--cream);
-        border: 4px double var(--gold); /* The "Premium" double border */
-        border-radius: 2px;
-        
-        padding: 15px 0;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3); /* Strong shadow for depth */
-        z-index: 50; /* Sits on top of everything */
+        padding: 20px 0;
+        z-index: 50;
+
+        /* COMPLEX VISUALS: */
+        background-color: var(--cream);
+        /* The "Double Frame" Effect */
+        border: 1px solid var(--gold);
+        outline: 4px solid var(--cream); /* Creates a gap */
+        box-shadow: 
+            0 0 0 5px var(--gold), /* Outer gold ring */
+            0 10px 30px rgba(0,0,0,0.4); /* Deep Drop Shadow */
     }
     
-    /* Typography */
+    /* Top Text (Small) */
     .hero-center-badge span:first-child { 
         display: block; 
+        font-family: var(--font-body);
         font-size: 0.7rem; 
-        letter-spacing: 2px; 
+        letter-spacing: 3px; 
         color: var(--text-muted);
         text-transform: uppercase;
         font-weight: 700;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
     }
+
+    /* Decorative Divider Line */
+    .hero-center-badge span:first-child::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 1px;
+        background: var(--gold);
+        margin: 8px auto 0;
+    }
+
+    /* Bottom Text (Script) */
     .hero-center-badge span:last-child { 
         display: block; 
-        font-size: 1.3rem; 
+        font-size: 1.5rem; 
         color: var(--green-dark);
         font-family: var(--font-head);
         font-style: italic;
+        line-height: 1.1;
     }
+    
+    /* Remove old circle line */
     .hero-center-badge::after { display: none; } 
 
-    /* 4. TALLER PHOTOS (Un-squished) */
+    /* 4. LOCKED PHOTO HEIGHTS (Perfectly Even) */
     .split-side {
         width: 100%;
-        height: 55vh; /* Much taller (was 45vh) */
+        /* FORCED HEIGHT: Both sides are exactly 42% of the screen height */
+        height: 42vh !important; 
+        min-height: 42vh !important;
+        max-height: 42vh !important;
+        
         border: none;
         overflow: hidden;
         display: flex;
@@ -438,17 +461,17 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
     .split-bg {
         background-size: cover; 
         background-position: center center;
-        transform: scale(1.1); /* Zoom to hide watermark */
+        transform: scale(1.1);
     }
 
-    /* 6. TEXT PLACEMENT (Perfectly Centered) */
+    /* 6. TEXT PLACEMENT */
     .split-content {
-        max-width: 85%;
+        max-width: 90%;
         text-align: center;
         margin: 0 !important;
         padding: 0 !important;
         transform: none !important;
-        text-shadow: 0 4px 20px rgba(0,0,0,0.9); /* High contrast shadow */
+        text-shadow: 0 4px 20px rgba(0,0,0,0.9);
     }
     
     .vibe-tag { 
@@ -456,9 +479,10 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
         color: var(--green-dark);
         box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         margin-bottom: 12px;
+        font-size: 0.7rem;
     } 
-    .split-content h2 { font-size: 3.2rem; margin-bottom: 10px; line-height: 1; }
-    .btn-text { font-size: 0.8rem; letter-spacing: 2px; border-bottom: 1px solid var(--gold); }
+    .split-content h2 { font-size: 2.8rem; margin-bottom: 10px; line-height: 1; }
+    .btn-text { font-size: 0.75rem; letter-spacing: 2px; border-bottom: 1px solid var(--gold); }
 
     /* 7. MENU GRID FIXES */
     .category-list { justify-content: flex-start; padding-left: 20px; }
