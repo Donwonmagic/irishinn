@@ -1,10 +1,6 @@
-// --- MASTER APP.JS ---
-
-// GLOBAL DATA
-let currentMenu = 'allday';
-let activeFilters = []; 
-
-/* --- REAL 2025 MENU DATA (Transcribed from Uploads) --- */
+/* =========================================
+   DATA: THE 2025 MENUS (Verified)
+   ========================================= */
 const MENUS = {
     allday: [
         /* --- SMALL PLATES --- */
@@ -373,132 +369,203 @@ const MENUS = {
     ]
 };
 
-// --- LOGIC ---
-window.toggleFilter = function(tag) {
-    const btn = document.getElementById(`btn-${tag}`);
-    if (activeFilters.includes(tag)) {
-        activeFilters = activeFilters.filter(f => f !== tag);
-        btn.classList.remove('active');
+/* =========================================
+   LOGIC: RENDER MENU, TABS & FILTERS
+   ========================================= */
+
+// STATE
+let activeMenu = 'allday'; // 'allday' or 'brunch'
+let activeFilters = [];    // ['gf', 'v', etc.]
+
+// DOM ELEMENTS
+const menuContainer = document.getElementById('menu-container');
+const categoryList = document.getElementById('category-list');
+const switchBtns = document.querySelectorAll('.menu-switch-btn');
+const filterBtns = document.querySelectorAll('.allergen-btn');
+
+/* --- 1. INITIALIZE --- */
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Auto-Select Brunch on Weekends (Sat/Sun before 3pm)
+    const now = new Date();
+    const day = now.getDay(); // 0=Sun, 6=Sat
+    const hour = now.getHours();
+    
+    // Logic: If Sat/Sun and before 3pm, show Brunch default
+    if ((day === 0 || day === 6) && hour < 15) {
+        switchMenu('brunch');
     } else {
-        activeFilters.push(tag);
-        btn.classList.add('active');
+        renderMenu(); // Default to All-Day
     }
-    renderMenu(currentMenu);
-};
+});
 
-window.switchMenu = function(menuType) {
-    currentMenu = menuType;
-    document.querySelectorAll('.menu-switch-btn').forEach(btn => btn.classList.remove('active'));
-    if(menuType === 'allday') document.querySelector('button[onclick="switchMenu(\'allday\')"]').classList.add('active');
-    if(menuType === 'brunch') document.querySelector('button[onclick="switchMenu(\'brunch\')"]').classList.add('active');
-    renderMenu(menuType);
-};
+/* --- 2. SWITCH MENU (All Day vs Brunch) --- */
+function switchMenu(menuType) {
+    activeMenu = menuType;
+    activeFilters = []; // Reset filters when switching
 
-function renderMenu(menuType) {
-    const content = document.getElementById('menu-content');
-    const navList = document.getElementById('category-nav');
-    if(!content) return;
-    
-    const data = MENUS[menuType];
-    content.innerHTML = '';
-    navList.innerHTML = '';
-    
-    data.forEach(section => {
-        const visibleItems = section.items.filter(item => {
-            if (activeFilters.length === 0) return true;
-            return activeFilters.every(filter => item.tags.includes(filter));
-        });
+    // Update Buttons
+    switchBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.menu === menuType) btn.classList.add('active');
+    });
 
-        if (visibleItems.length > 0) {
-            const li = document.createElement('li');
-            li.textContent = section.title.split(' ')[0];
-            if(section.id === 'brunch-specials') li.textContent = "Specials";
-            if(section.id === 'brunch-lunch') li.textContent = "Lunch";
-            li.onclick = () => document.getElementById(section.id).scrollIntoView({behavior: "smooth", block: "start"});
-            navList.appendChild(li);
+    // Reset Filter UI
+    filterBtns.forEach(btn => btn.classList.remove('active'));
 
-            const sectionDiv = document.createElement('section');
-            sectionDiv.id = section.id;
-            sectionDiv.className = 'menu-section';
-            sectionDiv.innerHTML = `<h3>${section.title}</h3>`;
-            
-            const grid = document.createElement('div');
-            grid.className = 'menu-grid';
+    renderMenu();
+}
 
-            visibleItems.forEach(item => {
-                const labels = { 'gf': 'GF', 'df': 'DF', 'nf': 'NF', 'v': 'Veg' };
-                const iconsHtml = item.tags
-                    .filter(t => labels[t])
-                    .map(t => `<span class="diet-icon ${t}">${labels[t]}</span>`)
-                    .join('');
+/* --- 3. TOGGLE FILTERS (GF, V, etc.) --- */
+function toggleFilter(tag) {
+    if (activeFilters.includes(tag)) {
+        activeFilters = activeFilters.filter(t => t !== tag); // Remove
+    } else {
+        activeFilters.push(tag); // Add
+    }
 
-                const bgStyle = item.img ? `background-image: url('${item.img}');` : `background-color: #f8f8f8;`;
-                
-                grid.innerHTML += `
-                    <div class="menu-item">
-                        <div class="item-thumb" style="${bgStyle}"></div>
-                        <div class="item-details">
-                            <div class="item-head">
-                                <span>${item.name}</span>
-                                <span>${typeof item.price === 'number' ? '$'+item.price : item.price}</span>
-                            </div>
-                            <div class="item-desc">${item.desc}</div>
-                            <div class="item-icons">${iconsHtml}</div>
-                        </div>
-                    </div>
-                `;
-            });
-            sectionDiv.appendChild(grid);
-            content.appendChild(sectionDiv);
+    // Update UI
+    filterBtns.forEach(btn => {
+        if (activeFilters.includes(btn.dataset.tag)) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
         }
     });
 
-    if (content.innerHTML === '') {
-        content.innerHTML = `<div class="text-center" style="padding: 4rem;"><h3>No items match your filters.</h3><button onclick="activeFilters=[]; renderMenu('${menuType}'); document.querySelectorAll('.allergen-btn').forEach(b=>b.classList.remove('active'))" style="margin-top:1rem; padding:10px 20px; cursor:pointer;">Clear Filters</button></div>`;
+    renderMenu();
+}
+
+/* --- 4. RENDER MENU (The Core Logic) --- */
+function renderMenu() {
+    const data = MENUS[activeMenu];
+    
+    // 1. Get Categories
+    const categories = [...new Set(data.map(item => item.category))];
+    
+    // 2. Render Categories (Sticky Nav)
+    // We only redraw categories if they change, but for simplicity, we redraw all.
+    let catHTML = `<li class="active" onclick="scrollToSection('top')">ALL</li>`;
+    categories.forEach(cat => {
+        // Create a "slug" for the ID (e.g. "Small Plates" -> "small-plates")
+        const slug = cat.toLowerCase().replace(/\s+/g, '-');
+        catHTML += `<li onclick="scrollToSection('${slug}')">${cat}</li>`;
+    });
+    // Only update category list if it exists (on menu page)
+    if (categoryList) {
+        categoryList.innerHTML = catHTML;
+    }
+
+    // 3. Render Items Grouped by Category
+    let gridHTML = '';
+    
+    categories.forEach(cat => {
+        // Filter items for this category
+        let items = data.filter(item => item.category === cat);
+
+        // APPLY ALLERGEN FILTERS
+        if (activeFilters.length > 0) {
+            items = items.filter(item => {
+                // Item must match ALL active filters (AND logic)
+                return activeFilters.every(filter => item.tags.includes(filter));
+            });
+        }
+
+        // If no items match in this category, skip rendering the header
+        if (items.length === 0) return;
+
+        const slug = cat.toLowerCase().replace(/\s+/g, '-');
+
+        gridHTML += `
+        <div class="menu-section" id="${slug}">
+            <h3>${cat}</h3>
+            <div class="menu-grid">
+        `;
+
+        items.forEach(item => {
+            // Generate Badges
+            const badges = item.tags.map(tag => {
+                let label = tag.toUpperCase();
+                return `<span class="diet-icon ${tag}">${label}</span>`;
+            }).join('');
+            
+            // Generate Price (Handle "M.P." string vs Number)
+            const priceDisplay = typeof item.price === 'number' ? `$${item.price}` : item.price;
+
+            gridHTML += `
+            <div class="menu-item">
+                <div class="item-details">
+                    <div class="item-head">
+                        <span>${item.name}</span>
+                        <span>${priceDisplay}</span>
+                    </div>
+                    <div class="item-desc">${item.description}</div>
+                    <div class="item-icons">${badges}</div>
+                </div>
+            </div>
+            `;
+        });
+
+        gridHTML += `</div></div>`; // Close grid and section
+    });
+
+    // Handle Empty State
+    if (gridHTML === '') {
+        gridHTML = `<div class="text-center" style="padding:4rem;">
+            <h3>No items match these filters.</h3>
+            <p>Try removing some filters to see more delicious options.</p>
+        </div>`;
+    }
+
+    // Only update grid if it exists
+    if (menuContainer) {
+        menuContainer.innerHTML = gridHTML;
+    }
+    
+    // Update "ScrollSpy" logic (highlights category as you scroll)
+    updateScrollSpy();
+}
+
+/* --- 5. UTILITIES --- */
+function scrollToSection(id) {
+    if (id === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        const el = document.getElementById(id);
+        if (el) {
+            // Offset for sticky header
+            const headerOffset = 180; 
+            const elementPosition = el.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
     }
 }
 
-// INIT
-document.addEventListener('DOMContentLoaded', () => {
-    const yearSpan = document.getElementById('year');
-    if(yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-    const statusDot = document.getElementById('status-dot');
-    const statusText = document.getElementById('status-text');
-    if (statusDot) {
-        const now = new Date();
-        const hour = now.getHours();
-        const isOpen = hour >= 11 && hour < 22; 
-        if (isOpen) {
-            statusDot.style.background = '#4caf50'; statusText.textContent = "Open Now";
-        } else {
-            statusDot.style.background = '#f44336'; statusText.textContent = "Closed";
-        }
-    }
-
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileDropdown = document.getElementById('mobile-dropdown');
-    if(menuBtn) menuBtn.addEventListener('click', () => mobileDropdown.classList.toggle('active'));
-
-    const eventForm = document.querySelector('.event-form');
-    if (eventForm) {
-        eventForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = eventForm.querySelector('.btn-submit');
-            btn.textContent = "Request Sent! ✓";
-            btn.style.backgroundColor = "#4caf50";
-            setTimeout(() => { eventForm.reset(); btn.textContent = "Submit Request"; btn.style.backgroundColor = ""; }, 2000);
+function updateScrollSpy() {
+    // Add scroll event listener to highlight active category
+    const listItems = document.querySelectorAll('.category-list li');
+    
+    listItems.forEach(item => {
+        item.addEventListener('click', function() {
+            listItems.forEach(li => li.classList.remove('active'));
+            this.classList.add('active');
         });
-    }
+    });
+}
 
-    if(document.getElementById('menu-content')) {
-        const now = new Date();
-        const day = now.getDay();
-        const hour = now.getHours();
-        if ((day === 0 || day === 6) && (hour >= 11 && hour < 15)) {
-            switchMenu('brunch');
-        } else {
-            switchMenu('allday');
-        }
-    }
-});
+// Global Event Listeners for HTML onClick
+window.switchMenu = switchMenu;
+window.toggleFilter = toggleFilter;
+window.scrollToSection = scrollToSection;
+
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('active');
+}
+window.toggleMobileMenu = toggleMobileMenu;
