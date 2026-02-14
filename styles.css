@@ -282,3 +282,33 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
     .hero-center-badge { width: 120px; height: 120px; }
     .hero-center-badge span:last-child { font-size: 1rem; }
 }
+
+/* --- FORCE MOBILE BOOK BUTTON (Emergency Fix) --- */
+.nav-item.cta { 
+    background-color: #123821 !important; /* Green Dark */
+    color: #c5a059 !important; /* Gold */
+    border: 1px solid #c5a059 !important; /* Gold Border */
+    
+    /* Shape & Layout */
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px !important; 
+    border-radius: 4px !important; 
+    margin: 6px !important; 
+    flex: 1.5 !important; /* Makes it wider than other icons */
+    
+    /* Typography */
+    font-weight: 700 !important; 
+    font-size: 0.9rem !important; 
+    text-transform: uppercase;
+    text-decoration: none !important;
+    
+    /* Shadow for "Pop" */
+    box-shadow: 0 4px 8px rgba(18, 56, 33, 0.4) !important; 
+}
+
+.nav-item.cta:active {
+    transform: scale(0.98);
+}
