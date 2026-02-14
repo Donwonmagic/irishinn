@@ -4,95 +4,371 @@
 let currentMenu = 'allday';
 let activeFilters = []; 
 
+/* --- REAL 2025 MENU DATA (Transcribed from Uploads) --- */
 const MENUS = {
     allday: [
+        /* --- SMALL PLATES --- */
         {
-            id: "small-plates",
-            title: "Small Plates & Starters",
-            items: [
-                { name: "Potato Leek Soup", price: 11, desc: "Classic creamy potato and leek soup.", img: "", tags: ["gf", "nf"] },
-                { name: "Hummus", price: 13, desc: "Pita, cucumbers, cherry tomatoes & olives.", img: "", tags: ["df", "nf", "v"] },
-                { name: "Mediterranean Platter", price: 20, desc: "Hummus, braised peppers, eggplant fritter, tomato jam, pesto, mozz.", img: "", tags: ["nf", "v"] },
-                { name: "Chicken Quesadilla", price: 19, desc: "Tomato compote, melted cheese, pico, sour cream, guacamole.", img: "", tags: [] },
-                { name: "Mussels & Clams", price: 21, desc: "Tomato, white wine, garlic & shallot broth. Garlic bread.", img: "", tags: ["gf", "df", "nf"] },
-                { name: "Popcorn Shrimp", price: 16, desc: "Deep-fried shrimp, cherry pepper sauce.", img: "", tags: [] },
-                { name: "Chicken Wings", price: 15, desc: "Buffalo, BBQ, Old Bay, Sweet Chili, or Hot Honey.", img: "", tags: ["gf", "nf"] },
-                { name: "Irish Tots", price: 14, desc: "Melted Irish cheddar, corned beef, aioli.", img: "", tags: ["gf", "nf"] },
-                { name: "Semolina Fried Calamari", price: 18, desc: "Lightly fried semolina-battered calamari with cherry pepper sauce.", img: "", tags: ["df", "nf"] },
-                { name: "Crab & Artichoke Dip", price: 19, desc: "Fresh crab meat blended with artichoke, cream cheese & Parmesan.", img: "", tags: ["gf", "nf"] }
-            ]
+            category: "Small Plates",
+            name: "Soup du Jour",
+            price: 14,
+            description: "Chef's daily selection.",
+            tags: [],
+            image: "soup.jpg"
         },
         {
-            id: "salads",
-            title: "Salads",
-            items: [
-                { name: "Apple & Pomegranate", price: 16, desc: "Goat cheese, walnuts, spinach, champagne vin.", img: "", tags: ["gf", "v"] },
-                { name: "Classic Caesar", price: 14, desc: "Romaine, parmesan, croutons.", img: "", tags: ["nf"] },
-                { name: "Irish Greens", price: 14, desc: "Cucumber, carrot, watermelon radish, Irish mustard vin.", img: "", tags: ["gf", "df", "nf", "v"] },
-                { name: "Greens & Grains", price: 19, desc: "Spinach, quinoa, feta, hummus, avocado.", img: "", tags: ["v", "gf"] }
-            ]
+            category: "Small Plates",
+            name: "Potato Leek Soup",
+            price: 11,
+            description: "A Glen Echo classic. Creamy and warming.",
+            tags: ["v", "gf"],
+            image: "soup_leek.jpg"
         },
         {
-            id: "handhelds",
-            title: "Handhelds (GF Bun Available +$2)",
-            items: [
-                { name: "Crab Cake Sandwich", price: "M.P.", desc: "Pan-seared Maryland crab cake, lettuce, tomato, brioche.", img: "", tags: ["nf"] },
-                { name: "Ahi Tuna Sandwich", price: 24, desc: "Seared ahi tuna, avocado, wasabi aioli, multigrain.", img: "", tags: ["df", "nf"] },
-                { name: "The Reuben", price: 20, desc: "House-cured corned beef, coleslaw, Swiss, rye.", img: "reuben.jpg", tags: ["nf"] },
-                { name: "Short Rib Sandwich", price: 20, desc: "Braised short rib, swiss, brioche.", img: "", tags: ["nf"] },
-                { name: "Irish Cheeseburger", price: 20, desc: "Angus beef, Irish cheddar, lettuce, tomato.", img: "", tags: ["nf"] },
-                { name: "Beyond Burger", price: 20, desc: "Plant-based burger, guacamole.", img: "", tags: ["df", "nf", "v"] },
-                { name: "Fish Tacos", price: 22, desc: "Blackened tilapia, pepper slaw.", img: "", tags: ["gf", "df", "nf"] }
-            ]
+            category: "Small Plates",
+            name: "Chicken Wings",
+            price: 15,
+            description: "Buffalo, BBQ, Old Bay, Sweet Chili, or Hot Honey.",
+            tags: ["gf"],
+            image: "wings.jpg"
         },
         {
-            id: "signatures",
-            title: "Irish Signatures",
-            items: [
-                { name: "Shepherd's Pie", price: 21, desc: "Ground beef, peas, carrots, Jameson gravy.", img: "", tags: ["gf", "nf"] },
-                { name: "Fish and Chips", price: 24, desc: "Guinness-battered cod, fries, coleslaw.", img: "", tags: ["df", "nf"] },
-                { name: "Banger Plate", price: 22, desc: "Pork sausages, mash, cabbage, mustard sauce.", img: "", tags: ["nf"] },
-                { name: "Corned Beef & Cabbage", price: 24, desc: "Slow-braised corned beef, red potatoes, carrots, mustard sauce.", img: "corned_beef.jpg", tags: ["gf", "df", "nf"] },
-                { name: "Chicken Pot Pie", price: 24, desc: "Creamy sauce, flaky pastry crust.", img: "", tags: ["nf"] },
-                { name: "Coconut Curry", price: 24, desc: "Chickpeas, cauliflower, jasmine rice.", img: "", tags: ["gf", "df", "nf", "v"] },
-                { name: "Shrimp, Scallop & Grits", price: 26, desc: "Shrimp & scallops over cheddar grits, andouille sausage.", img: "", tags: ["gf", "nf"] }
-            ]
+            category: "Small Plates",
+            name: "Popcorn Shrimp",
+            price: 16,
+            description: "Deep-fried shrimp served with cherry pepper dipping sauce.",
+            tags: [],
+            image: "shrimp.jpg"
         },
         {
-            id: "entrees",
-            title: "Main Entrées",
-            items: [
-                { name: "Seafood Stew", price: 34, desc: "Shrimp, scallops, mussels, fish, fennel broth.", img: "", tags: ["gf", "df", "nf"] },
-                { name: "Crab Cake Entrée", price: "M.P.", desc: "Mashed potatoes, veg, tartar.", img: "", tags: ["nf"] },
-                { name: "Roasted Salmon", price: "M.P.", desc: "Rice pilaf, lemon caper beurre blanc.", img: "", tags: ["gf", "nf"] },
-                { name: "Beef Stroganoff", price: 34, desc: "Beef tips, mushrooms, egg noodles, Guinness gravy.", img: "", tags: ["nf"] },
-                { name: "Short Rib", price: 32, desc: "Slow-braised, Guinness gravy, cheddar grits.", img: "", tags: ["gf", "nf"] },
-                { name: "Rack of Lamb", price: 38, desc: "Herb-crusted, fingerling potatoes, port reduction.", img: "", tags: ["nf"] },
-                { name: "NY Strip Steak", price: 34, desc: "Fries, peppercorn sauce.", img: "", tags: ["gf", "nf"] }
-            ]
+            category: "Small Plates",
+            name: "Irish Tots",
+            price: 14,
+            description: "Crispy tater tots topped with melted Irish cheddar & corned beef brisket.",
+            tags: [],
+            image: "tots.jpg"
+        },
+        {
+            category: "Small Plates",
+            name: "Semolina Fried Calamari",
+            price: 18,
+            description: "Lightly fried semolina-battered calamari with cherry pepper sauce.",
+            tags: [],
+            image: "calamari.jpg"
+        },
+        {
+            category: "Small Plates",
+            name: "Caprese Flatbread",
+            price: 18,
+            description: "Spinach, pesto, roasted cherry tomato, parmesan & balsamic glaze.",
+            tags: ["v"],
+            image: "flatbread.jpg"
+        },
+        {
+            category: "Small Plates",
+            name: "Crab & Artichoke Dip",
+            price: 19,
+            description: "Fresh crab meat, artichoke, cream cheese & parmesan. Served with warm pita.",
+            tags: [],
+            image: "crab_dip.jpg"
+        },
+        {
+            category: "Small Plates",
+            name: "Hummus",
+            price: 13,
+            description: "Creamy hummus with pita, cucumbers, cherry tomato & olives.",
+            tags: ["v", "vg"],
+            image: "hummus.jpg"
+        },
+        {
+            category: "Small Plates",
+            name: "Deviled Eggs",
+            price: 12,
+            description: "Topped with smoked salmon, tomato, caper & red onion.",
+            tags: ["gf"],
+            image: "eggs.jpg"
+        },
+        {
+            category: "Small Plates",
+            name: "Mediterranean Platter",
+            price: 20,
+            description: "Hummus, braised peppers, eggplant fritter, tomato jam, walnut pesto, fresh mozz, pickled veg, fried pita.",
+            tags: ["v"],
+            image: "med_platter.jpg"
+        },
+        {
+            category: "Small Plates",
+            name: "Chicken Quesadilla",
+            price: 19,
+            description: "Chicken, tomato compote, melted cheese, pico de gallo, sour cream & guacamole.",
+            tags: [],
+            image: "quesadilla.jpg"
+        },
+        {
+            category: "Small Plates",
+            name: "Mussels & Clams",
+            price: 21,
+            description: "Fresh clams and PEI mussels in tomato, white wine, garlic & shallot broth.",
+            tags: ["gf"],
+            image: "mussels.jpg"
+        },
+
+        /* --- SALADS --- */
+        {
+            category: "Salads",
+            name: "Apple & Pomegranate",
+            price: 16,
+            description: "Goat cheese, pomegranate & candied walnuts over spinach with champagne vinaigrette.",
+            tags: ["v", "gf"],
+            image: "salad_apple.jpg"
+        },
+        {
+            category: "Salads",
+            name: "Classic Caesar",
+            price: 14,
+            description: "Crisp romaine, parmesan, house-made croutons & creamy caesar dressing.",
+            tags: [],
+            image: "caesar.jpg"
+        },
+        {
+            category: "Salads",
+            name: "Irish Greens",
+            price: 14,
+            description: "Arcadian greens, tomato, cucumber, carrot, watermelon radish & Irish mustard vinaigrette.",
+            tags: ["v", "vg", "gf"],
+            image: "greens.jpg"
+        },
+        {
+            category: "Salads",
+            name: "Greens and Grains",
+            price: 19,
+            description: "Spinach & quinoa, cherry tomato, cucumber, feta, hummus & avocado. Served with pita.",
+            tags: ["v"],
+            image: "grains.jpg"
+        },
+
+        /* --- HANDHELDS --- */
+        {
+            category: "Handhelds",
+            name: "Crab Cake Sandwich",
+            price: "M.P.",
+            description: "Pan-seared Maryland crab cake with lettuce, tomato & onion on toasted brioche.",
+            tags: [],
+            image: "crabcake_sand.jpg"
+        },
+        {
+            category: "Handhelds",
+            name: "Ahi Tuna Sandwich",
+            price: 24,
+            description: "Seared ahi tuna, avocado, lettuce, tomato & wasabi aioli on multigrain.",
+            tags: [],
+            image: "tuna_sand.jpg"
+        },
+        {
+            category: "Handhelds",
+            name: "Reuben",
+            price: 20,
+            description: "House-cured corned beef, coleslaw, swiss cheese & 1000 island on rye.",
+            tags: [],
+            image: "reuben.jpg"
+        },
+        {
+            category: "Handhelds",
+            name: "Short Rib Sandwich",
+            price: 20,
+            description: "Braised short rib, lettuce, tomato, red onion & swiss cheese on brioche.",
+            tags: [],
+            image: "shortrib_sand.jpg"
+        },
+        {
+            category: "Handhelds",
+            name: "Irish Cheeseburger",
+            price: 20,
+            description: "Grilled Angus beef, Irish cheddar, lettuce, tomato & onion on brioche.",
+            tags: [],
+            image: "burger.jpg"
+        },
+        {
+            category: "Handhelds",
+            name: "Beyond Burger",
+            price: 20,
+            description: "Plant-based burger, LTO, guacamole & 1000 island on Gluten Free bun.",
+            tags: ["v", "gf"],
+            image: "beyond.jpg"
+        },
+        {
+            category: "Handhelds",
+            name: "Chicken Cutlet Sandwich",
+            price: 20,
+            description: "Crispy fried chicken, lettuce, tomato, red onion on brioche. Try Buffalo Style!",
+            tags: [],
+            image: "chicken_sand.jpg"
+        },
+        {
+            category: "Handhelds",
+            name: "Fish Tacos",
+            price: 22,
+            description: "Blackened tilapia with pepper slaw. Sub Shrimp or Salmon (+$6).",
+            tags: ["gf"],
+            image: "tacos.jpg"
+        },
+
+        /* --- SIGNATURES --- */
+        {
+            category: "Signatures",
+            name: "Shepherd's Pie",
+            price: 24,
+            description: "Ground beef, peas, carrots & Jameson gravy, topped with mashed potatoes. (Veg option available).",
+            tags: ["gf"],
+            image: "shepherds.jpg"
+        },
+        {
+            category: "Signatures",
+            name: "Fish and Chips",
+            price: 24,
+            description: "Guinness-battered cod with fries, coleslaw & tartar sauce.",
+            tags: [],
+            image: "fishchips.jpg"
+        },
+        {
+            category: "Signatures",
+            name: "Seafood Stew",
+            price: 34,
+            description: "Shrimp, scallops, mussels & fish in white wine & herb broth with fennel & garlic bread.",
+            tags: [],
+            image: "seafood_stew.jpg"
+        },
+        {
+            category: "Signatures",
+            name: "Beef Stroganoff",
+            price: 34,
+            description: "Beef tips sautéed with mushrooms over egg noodles in rich Guinness gravy with sour cream.",
+            tags: [],
+            image: "stroganoff.jpg"
+        },
+        {
+            category: "Signatures",
+            name: "Short Rib",
+            price: 32,
+            description: "Slow-braised short rib in Guinness gravy with veg of the day & cheddar grits.",
+            tags: [],
+            image: "shortrib_main.jpg"
+        },
+        {
+            category: "Signatures",
+            name: "Rack of Lamb",
+            price: 38,
+            description: "Herb-crusted with roasted fingerling potatoes, creamed spinach & port wine reduction.",
+            tags: [],
+            image: "lamb.jpg"
+        },
+        {
+            category: "Signatures",
+            name: "NY Strip Steak",
+            price: 34,
+            description: "Grilled strip with french fries, veg of the day & peppercorn sauce.",
+            tags: ["gf"],
+            image: "steak.jpg"
+        },
+        {
+            category: "Signatures",
+            name: "Corned Beef and Cabbage",
+            price: 24,
+            description: "Slow-braised corned beef, mashed red potatoes, cabbage, carrot & Irish mustard sauce.",
+            tags: ["gf"],
+            image: "corned_beef.jpg"
+        },
+        {
+            category: "Signatures",
+            name: "Chicken Pot Pie",
+            price: 24,
+            description: "Chicken breast, peas & root vegetables in creamy sauce under flaky pastry crust.",
+            tags: [],
+            image: "potpie.jpg"
+        },
+        {
+            category: "Signatures",
+            name: "Coconut Curry",
+            price: 24,
+            description: "Chickpeas, cauliflower, bell pepper & fingerling potatoes in coconut curry with jasmine rice.",
+            tags: ["v", "vg", "gf"],
+            image: "curry.jpg"
+        },
+        {
+            category: "Signatures",
+            name: "Shrimp, Scallop & Grits",
+            price: 26,
+            description: "Served over cheddar grits and tomato concasse with andouille sausage.",
+            tags: ["gf"],
+            image: "shrimp_grits.jpg"
         }
     ],
+
+    /* --- BRUNCH (Weekends) --- */
     brunch: [
         {
-            id: "brunch-specials",
-            title: "Brunch Specials",
-            items: [
-                { name: "Full Irish Breakfast", price: 22, desc: "Two eggs, bangers, rashers, black & white pudding, mushrooms, tomato, beans, toast.", img: "", tags: ["nf"] },
-                { name: "Corned Beef Hash", price: 19, desc: "House-made corned beef, potatoes, onions, poached eggs.", img: "corned_beef.jpg", tags: ["gf", "df", "nf"] },
-                { name: "Eggs Benedict", price: 18, desc: "Poached eggs, Canadian bacon, hollandaise, English muffin.", img: "", tags: ["nf"] },
-                { name: "Smoked Salmon Plate", price: 20, desc: "Capers, onions, tomato, cream cheese, brown bread.", img: "", tags: ["nf"] },
-                { name: "Brioche French Toast", price: 16, desc: "Berries, maple syrup, whipped cream.", img: "", tags: ["v", "nf"] }
-            ]
+            category: "Brunch Starters",
+            name: "Irish Pancake Breakfast",
+            price: 18,
+            description: "Two eggs, bacon or sausage, stack of pancakes (Strawberry, Nutella, or Maple).",
+            tags: [],
+            image: "pancakes.jpg"
         },
         {
-            id: "brunch-lunch",
-            title: "Lunch Favorites (Available during Brunch)",
-            items: [
-                { name: "The Reuben", price: 20, desc: "Corned beef, swiss, coleslaw, rye.", img: "reuben.jpg", tags: ["nf"] },
-                { name: "Classic Caesar", price: 14, desc: "Romaine, parmesan, croutons.", img: "", tags: ["nf"] },
-                { name: "Fish & Chips", price: 24, desc: "Guinness-battered cod, fries, coleslaw.", img: "", tags: ["df", "nf"] },
-                { name: "Irish Cheeseburger", price: 20, desc: "Angus beef, Irish cheddar.", img: "", tags: ["nf"] }
-            ]
+            category: "Brunch Starters",
+            name: "Bailey's French Toast",
+            price: 18,
+            description: "Rich French toast infused with Bailey's Irish Cream. Served with eggs & meat.",
+            tags: [],
+            image: "french_toast.jpg"
+        },
+        {
+            category: "Brunch Mains",
+            name: "Traditional Irish Breakfast",
+            price: 20,
+            description: "Irish sausage, black & white puddings, rashers, tomatoes, beans, toast, two eggs.",
+            tags: [],
+            image: "full_irish.jpg"
+        },
+        {
+            category: "Brunch Mains",
+            name: "Corned Beef Hash",
+            price: 24,
+            description: "Beef mixed with peppers and roasted potatoes, topped with two eggs.",
+            tags: ["gf"],
+            image: "hash.jpg"
+        },
+        {
+            category: "Brunch Mains",
+            name: "Eggs Benedict",
+            price: 20,
+            description: "Choice of Smoked Salmon, Irish Rashers, or Sausage Patty. With roasted potatoes.",
+            tags: [],
+            image: "benedict.jpg"
+        },
+        {
+            category: "Brunch Mains",
+            name: "Steak and Eggs",
+            price: 28,
+            description: "6 oz flat iron steak, two eggs any style, seasonal veg, blue cheese butter.",
+            tags: ["gf"],
+            image: "steak_eggs.jpg"
+        },
+        {
+            category: "Brunch Mains",
+            name: "Dubliner Scrambled Eggs",
+            price: 25,
+            description: "Smoked salmon scrambled with cream cheese and chives. Served with roasted potatoes.",
+            tags: ["gf"],
+            image: "scramble.jpg"
+        },
+        {
+            category: "Brunch Mains",
+            name: "Crispy Fish Sandwich",
+            price: 20,
+            description: "Fried cod on brioche, tangy tartar sauce, creamy coleslaw.",
+            tags: [],
+            image: "fish_sand.jpg"
         }
     ]
 };
