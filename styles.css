@@ -363,60 +363,7 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 .nav-item.cta { background: var(--green-dark); color: var(--gold); padding: 8px; border-radius: 5px; margin: 5px; font-weight: 700; font-size: 0.9rem; flex-direction: row; flex: 1.5; box-shadow: 0 4px 8px rgba(18, 56, 33, 0.2); transition: transform 0.2s; }
 .nav-item.cta:active { transform: scale(0.98); }
 
-/* --- RESPONSIVE --- */
-@media screen and (max-width: 1024px) {
-    .hidden-mobile { display: none; }
-    .menu-toggle { display: block; }
-    .split-hero { flex-direction: column; height: auto; }
-    .split-side { width: 100%; height: 60vh; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
-    .pub-side .split-content { padding-right: 0; transform: translateY(-40px); }
-    .dining-side .split-content { padding-left: 0; transform: translateY(40px); }
-    .hero-center-badge { width: 140px; height: 140px; }
-    .split-content h2 { font-size: 3rem; }
-    .mobile-bottom-nav { display: flex; }
-    .category-list { justify-content: flex-start; padding-left: 20px; }
-    .menu-switch-btn { width: 100%; margin: 5px 0; }
-    .menu-switcher-container { padding: 1rem 20px; }
-    .menu-grid { grid-template-columns: 1fr; }
-}
-
-@media screen and (max-width: 768px) {
-    .split-side { height: 50vh; }
-    .hero-center-badge { width: 120px; height: 120px; }
-    .hero-center-badge span:last-child { font-size: 1rem; }
-}
-
-/* --- FORCE MOBILE BOOK BUTTON (Emergency Fix) --- */
-.nav-item.cta { 
-    background-color: #123821 !important; /* Green Dark */
-    color: #c5a059 !important; /* Gold */
-    border: 1px solid #c5a059 !important; /* Gold Border */
-    
-    /* Shape & Layout */
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 15px !important; 
-    border-radius: 4px !important; 
-    margin: 6px !important; 
-    flex: 1.5 !important; /* Makes it wider than other icons */
-    
-    /* Typography */
-    font-weight: 700 !important; 
-    font-size: 0.9rem !important; 
-    text-transform: uppercase;
-    text-decoration: none !important;
-    
-    /* Shadow for "Pop" */
-    box-shadow: 0 4px 8px rgba(18, 56, 33, 0.4) !important; 
-}
-
-.nav-item.cta:active {
-    transform: scale(0.98);
-}
-
-/* --- RESPONSIVE & MOBILE FIXES (Final Alignment) --- */
+/* --- RESPONSIVE & MOBILE FIXES (Cinematic Stack) --- */
 @media screen and (max-width: 1024px) {
     
     /* 1. HIDE DESKTOP NAV */
@@ -424,88 +371,94 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
     .menu-toggle { display: block; }
     .mobile-bottom-nav { display: flex; }
 
-    /* 2. SPLIT HERO LAYOUT (Stacked) */
+    /* 2. SPLIT HERO LAYOUT */
     .split-hero {
         flex-direction: column;
         height: auto; 
         margin-top: -1px;
+        background: var(--cream); /* Fills the gap behind badge */
     }
 
-    /* 3. MINIMALIST BANNER (The Middle Strip) */
+    /* 3. THE "SEAL" BADGE (Fixed Width & Elegant) */
     .hero-center-badge {
         position: relative;
         transform: none;
         left: auto; top: auto;
-        order: 2; /* Sits between photos */
+        order: 2; 
         
-        width: 100%;
+        /* Box Styling */
+        width: 80%; /* Not too wide */
+        max-width: 300px; /* Never gets huge */
+        margin: -25px auto; /* Pulls it UP to overlap nicely */
         height: auto;
-        border-radius: 0;
-        border: none;
-        border-top: 1px solid rgba(197, 160, 89, 0.3);
-        border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+        
         background: var(--cream);
+        border: 4px double var(--gold); /* The "Premium" double border */
+        border-radius: 2px;
         
         padding: 15px 0;
-        box-shadow: none;
-        z-index: 20;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3); /* Strong shadow for depth */
+        z-index: 50; /* Sits on top of everything */
     }
     
-    /* Clean Typography for Banner */
+    /* Typography */
     .hero-center-badge span:first-child { 
         display: block; 
-        font-size: 0.75rem; 
-        letter-spacing: 3px; 
+        font-size: 0.7rem; 
+        letter-spacing: 2px; 
         color: var(--text-muted);
-        margin-bottom: 2px;
         text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 4px;
     }
     .hero-center-badge span:last-child { 
         display: block; 
-        font-size: 1.4rem; 
+        font-size: 1.3rem; 
         color: var(--green-dark);
         font-family: var(--font-head);
         font-style: italic;
     }
     .hero-center-badge::after { display: none; } 
 
-    /* 4. UNIFIED PHOTO CONTAINERS */
+    /* 4. TALLER PHOTOS (Un-squished) */
     .split-side {
         width: 100%;
-        height: 45vh; /* Uniform Height */
+        height: 55vh; /* Much taller (was 45vh) */
         border: none;
         overflow: hidden;
-        
-        /* THE ALIGNMENT FIX: */
         display: flex;
-        align-items: center; /* Vertically Center */
-        justify-content: center; /* Horizontally Center */
+        align-items: center; 
+        justify-content: center;
     }
     
-    .pub-side { order: 1; }
-    .dining-side { order: 3; }
+    .pub-side { order: 1; z-index: 1; }
+    .dining-side { order: 3; z-index: 1; }
 
     /* 5. ZOOM & CROP (Hides Diamond) */
     .split-bg {
-        background-size: 110%; /* Zoom in 10% */
-        background-position: center center; /* Focus on center */
+        background-size: cover; 
+        background-position: center center;
+        transform: scale(1.1); /* Zoom to hide watermark */
     }
 
-    /* 6. TEXT PLACEMENT (Perfectly Consistent) */
+    /* 6. TEXT PLACEMENT (Perfectly Centered) */
     .split-content {
-        max-width: 90%;
+        max-width: 85%;
         text-align: center;
-        margin: 0 !important; /* Remove random margins */
+        margin: 0 !important;
         padding: 0 !important;
         transform: none !important;
-        
-        /* Make text pop against photo */
-        text-shadow: 0 2px 15px rgba(0,0,0,0.8); 
+        text-shadow: 0 4px 20px rgba(0,0,0,0.9); /* High contrast shadow */
     }
     
-    .vibe-tag { margin-bottom: 10px; } /* Consistent gap above title */
-    .split-content h2 { font-size: 3rem; margin-bottom: 10px; }
-    .btn-text { font-size: 0.85rem; letter-spacing: 2px; }
+    .vibe-tag { 
+        background: var(--gold); 
+        color: var(--green-dark);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        margin-bottom: 12px;
+    } 
+    .split-content h2 { font-size: 3.2rem; margin-bottom: 10px; line-height: 1; }
+    .btn-text { font-size: 0.8rem; letter-spacing: 2px; border-bottom: 1px solid var(--gold); }
 
     /* 7. MENU GRID FIXES */
     .category-list { justify-content: flex-start; padding-left: 20px; }
