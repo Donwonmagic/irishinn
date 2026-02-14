@@ -250,8 +250,75 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 .policy-content p, .policy-content li { font-size: 1rem; color: var(--text-main); margin-bottom: 1rem; line-height: 1.8; }
 .policy-content a { color: var(--green-dark); font-weight: 700; text-decoration: underline; }
 
-/* Reviews */
-.reviews-bar { background: var(--gold); color: var(--green-dark); text-align: center; padding: 10px; font-weight: 700; font-size: 0.9rem; }
+/* --- OPTIMIZED INFINITE TICKER --- */
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--gold);
+    padding: 14px 0;
+    border-bottom: 4px solid var(--green-dark);
+    white-space: nowrap;
+    position: relative;
+    z-index: 5;
+    user-select: none; 
+}
+
+/* FADE EFFECT */
+.ticker-wrap::before, .ticker-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+.ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--gold), transparent); }
+.ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--gold), transparent); }
+
+.ticker {
+    display: inline-block;
+    animation: marquee 80s linear infinite;
+    will-change: transform;
+}
+
+/* PAUSE ON HOVER */
+.ticker-wrap:hover .ticker { animation-play-state: paused; cursor: default; }
+
+.ticker-item {
+    display: inline-block;
+    padding: 0 1.5rem;
+    font-size: 1.1rem;
+    color: var(--green-dark);
+    font-family: var(--font-head);
+    font-style: italic;
+    vertical-align: middle;
+}
+
+.ticker-item .source {
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-style: normal;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-left: 8px;
+    opacity: 0.8;
+    background: rgba(18, 56, 33, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+@keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (max-width: 768px) {
+    .ticker-item { font-size: 0.95rem; padding: 0 1rem; }
+    .ticker { animation-duration: 60s; }
+    .ticker-wrap::before, .ticker-wrap::after { width: 50px; }
+}
 
 /* Mobile Bottom Nav */
 .mobile-bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: white; border-top: 1px solid #eee; z-index: 2000; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
