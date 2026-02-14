@@ -99,6 +99,83 @@ nav { background: var(--green-dark); padding: 1rem 0; position: sticky; top: 0; 
 .category-list li { cursor: pointer; color: var(--text-muted); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; padding-bottom: 5px; border-bottom: 2px solid transparent; }
 .category-list li:hover, .category-list li.active { color: var(--green-dark); border-color: var(--gold); }
 
+/* --- PASTE THIS INTO YOUR STYLES.CSS --- */
+
+/* ... (Keep all your existing Variables, Reset, Nav, Hero styles) ... */
+
+/* --- NEW: ALLERGEN FILTERS --- */
+.allergen-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+}
+
+.filter-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-right: 5px;
+}
+
+.allergen-btn {
+    background: white;
+    border: 1px solid #ddd;
+    color: var(--text-muted);
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.allergen-btn .icon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.allergen-btn:hover {
+    border-color: var(--green-dark);
+    color: var(--green-dark);
+}
+
+/* ACTIVE STATE (When clicked) */
+.allergen-btn.active {
+    background-color: var(--green-dark);
+    border-color: var(--green-dark);
+    color: white;
+    box-shadow: 0 2px 5px rgba(18, 56, 33, 0.2);
+}
+
+/* ICON TAGS ON MENU ITEMS */
+.item-icons {
+    display: flex;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.diet-icon {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.diet-icon.gf { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; } /* Green */
+.diet-icon.df { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; } /* Blue */
+.diet-icon.nf { background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2; } /* Orange */
+.diet-icon.v { background: #f1f8e9; color: #558b2f; border: 1px solid #dcedc8; } /* Light Green */
+
+/* ... (Keep your Menu Grid, Mobile Nav, etc.) ... */
 /* --- MENU GRID --- */
 .menu-section { margin: 3rem 0; scroll-margin-top: 180px; }
 .menu-section h3 { font-size: 2rem; color: var(--green-dark); border-bottom: 1px solid var(--gold); display: inline-block; margin-bottom: 2rem; padding-right: 2rem; }
