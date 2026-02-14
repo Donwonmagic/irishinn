@@ -291,26 +291,48 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 /* PAUSE ON HOVER */
 .ticker-wrap:hover .ticker { animation-play-state: paused; cursor: default; }
 
+/* --- TICKER CONTENT STYLING --- */
 .ticker-item {
     display: inline-block;
     padding: 0 1rem;
-    font-size: 1rem;
+    font-size: 1.1rem; /* Slightly larger quote text for readability */
     color: var(--green-dark);
     font-family: var(--font-head);
     font-style: italic;
     vertical-align: middle;
 }
 
+/* THE "EMBELLISHED" SOURCE BADGE */
 .ticker-item .source {
     font-family: var(--font-body);
-    font-weight: 700;
-    font-style: normal;
+    font-weight: 800; /* Extra Bold */
+    font-style: normal; /* Removes italic */
     text-transform: uppercase;
-    font-size: 0.7rem;
+    font-size: 0.75rem; /* Small but punchy */
     letter-spacing: 1px;
-    margin-left: 8px;
-    color: var(--gold); /* Gold text for source looks premium */
+    margin-left: 10px;
+    
+    /* The "Badge" Look */
+    background-color: rgba(18, 56, 33, 0.08); /* Very subtle green tint */
+    color: var(--green-dark); 
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(18, 56, 33, 0.1); /* Subtle border for definition */
+    
     opacity: 1;
+    display: inline-block; /* Keeps it tight */
+    transform: translateY(-1px); /* Slight lift */
+}
+
+/* THE SEPARATOR (Celtic Diamond) */
+.ticker-separator {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 0.8rem; /* Made slightly larger to match new text size */
+    vertical-align: middle;
+    opacity: 0.6;
+    padding: 0 0.8rem;
+}
 }
 
 /* NEW NUANCED SEPARATOR */
