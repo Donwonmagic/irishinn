@@ -419,18 +419,111 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 /* --- RESPONSIVE & MOBILE FIXES --- */
 @media screen and (max-width: 1024px) {
     
-    /* 1. HIDE DESKTOP NAV items */
+    /* 1. HIDE DESKTOP NAV */
     .hidden-mobile { display: none; }
     .menu-toggle { display: block; }
-    
-    /* 2. ENABLE MOBILE BOTTOM NAV */
     .mobile-bottom-nav { display: flex; }
 
-    /* 3. FIX THE WHITE BAR GAP */
+    /* 2. SPLIT HERO LAYOUT */
     .split-hero {
-        margin-top: -1px; /* Pulls hero up to touch the nav */
+        flex-direction: column;
+        height: auto; 
+        margin-top: -1px;
     }
 
+    /* 3. MINIMALIST BANNER (Formerly the Badge) */
+    .hero-center-badge {
+        position: relative;
+        transform: none;
+        left: auto; top: auto;
+        
+        /* Order: Places it between the photos */
+        order: 2; 
+        
+        /* Minimalist Modern Look */
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+        border: none;
+        border-top: 1px solid rgba(197, 160, 89, 0.3); /* Subtle Gold Line */
+        border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+        background: var(--cream);
+        
+        padding: 18px 0;
+        box-shadow: none; /* Removed heavy shadow */
+        z-index: 20;
+    }
+    
+    /* Typography for Banner */
+    .hero-center-badge span:first-child { 
+        display: block; 
+        font-size: 0.75rem; 
+        letter-spacing: 3px; /* Modern spacing */
+        color: var(--text-muted);
+        margin-bottom: 2px;
+    }
+    .hero-center-badge span:last-child { 
+        display: block; 
+        font-size: 1.4rem; 
+        color: var(--green-dark);
+        font-family: var(--font-head);
+        font-style: italic;
+    }
+    .hero-center-badge::after { display: none; } 
+
+    /* 4. FIX THE PHOTOS (Crop the Diamond Out) */
+    .split-side {
+        width: 100%;
+        height: 45vh; 
+        border: none;
+        overflow: hidden; /* Ensures crop works */
+    }
+    
+    .pub-side { order: 1; }
+    .dining-side { order: 3; }
+
+    .split-bg {
+        /* ZOOM & CROP TRICK: 
+           110% size pushes edges out. 
+           'center 40%' focuses on the upper-middle, pushing bottom-right diamond off-screen. */
+        background-size: 110%; 
+        background-position: center 40%; 
+    }
+
+    /* 5. TEXT PLACEMENT (Clean Overlay) */
+    .split-content {
+        max-width: 90%;
+        transform: none !important;
+        text-shadow: 0 2px 15px rgba(0,0,0,0.7); /* Readable text */
+    }
+    
+    /* Pub Text */
+    .pub-side { align-items: flex-end; padding-bottom: 30px; }
+    .pub-side .split-content { margin-bottom: 10px; }
+
+    /* Dining Text */
+    .dining-side { align-items: flex-start; padding-top: 30px; }
+    .dining-side .split-content { margin-top: 10px; }
+
+    .split-content h2 { font-size: 3rem; }
+    
+    /* 6. MENU GRID */
+    .category-list { justify-content: flex-start; padding-left: 20px; }
+    .menu-switch-btn { width: 100%; margin: 5px 0; }
+    .menu-switcher-container { padding: 1rem 20px; }
+    .menu-grid { grid-template-columns: 1fr; }
+}
+
+/* --- FORCE GREEN BUTTON --- */
+.mobile-bottom-nav a[href*="resy.com"] {
+    background-color: #123821 !important;
+    color: #c5a059 !important;
+    border: 1px solid #c5a059 !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 10px rgba(18, 56, 33, 0.3) !important;
+    display: flex !important;
+    flex-direction: row !important;
+}
     /* 4. SPLIT HERO LAYOUT (Stacked) */
     .split-hero {
         flex-direction: column;
