@@ -569,3 +569,58 @@ function toggleMobileMenu() {
     menu.classList.toggle('active');
 }
 window.toggleMobileMenu = toggleMobileMenu;
+
+/* =========================================
+   FEATURE: LIVE STATUS INDICATOR (Open/Closed)
+   ========================================= */
+function checkStatus() {
+    const now = new Date();
+    const day = now.getDay(); // 0=Sun, 1=Mon, etc.
+    const hour = now.getHours();
+    const min = now.getMinutes();
+    const time = hour + (min / 60); // Convert time to decimal (e.g. 11:30 = 11.5)
+
+    let isOpen = false;
+
+    // HOURS LOGIC:
+    // Mon-Thu: 11:30am - 9:30pm (11.5 - 21.5)
+    // Fri-Sat: 11:30am - 10:30pm (11.5 - 22.5)
+    // Sun:     11:00am - 9:30pm  (11.0 - 21.5)
+
+    if (day >= 1 && day <= 4) { 
+        // Monday - Thursday
+        if (time >= 11.5 && time < 21.5) isOpen = true;
+    } else if (day === 5 || day === 6) { 
+        // Friday - Saturday
+        if (time >= 11.5 && time < 22.5) isOpen = true;
+    } else { 
+        // Sunday
+        if (time >= 11.0 && time < 21.5) isOpen = true;
+    }
+
+    // UPDATE THE DOM
+    const dot = document.getElementById('status-dot');
+    const text = document.getElementById('status-text');
+
+    if (dot && text) {
+        if (isOpen) {
+            dot.style.background = '#2ecc71'; // Bright Green
+            dot.style.boxShadow = '0 0 10px #2ecc71'; // Glowing effect
+            text.innerText = 'Open Now';
+            text.style.color = '#fff';
+            text.style.fontWeight = 'bold';
+        } else {
+            dot.style.background = '#e74c3c'; // Red
+            dot.style.boxShadow = 'none';
+            text.innerText = 'Closed';
+            text.style.color = '#ccc';
+            text.style.fontWeight = 'normal';
+        }
+    }
+}
+
+// Run immediately on load
+checkStatus();
+
+// Check again every 60 seconds (so it updates if you leave the tab open)
+setInterval(checkStatus, 60000);
