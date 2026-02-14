@@ -6,14 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const statusDot = document.getElementById('status-dot');
     const statusText = document.getElementById('status-text');
+    
     if (statusDot) {
         const hour = new Date().getHours();
-        const isOpen = hour >= 11 && hour < 22; // Open 11am - 10pm
+        // Assuming hours are 11am to 10pm (22:00)
+        const isOpen = hour >= 11 && hour < 22; 
+        
         if (isOpen) {
-            statusDot.style.background = '#4caf50';
+            statusDot.style.background = '#4caf50'; // Green
             statusText.textContent = "Open Now";
         } else {
-            statusDot.style.background = '#f44336';
+            statusDot.style.background = '#f44336'; // Red
             statusText.textContent = "Closed (Opens 11am)";
         }
     }
@@ -21,16 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 2. MOBILE MENU TOGGLE ---
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileDropdown = document.getElementById('mobile-dropdown');
+    
     if(menuBtn){
         menuBtn.addEventListener('click', () => {
             mobileDropdown.classList.toggle('active');
         });
     }
 
-    // --- 3. MENU DATA & FILTERING ---
+    // --- 3. MENU SYSTEM ---
+    // If we are on the menu page, we load the data.
     const menuContainer = document.getElementById('menu-content');
     if (menuContainer) {
-        // DATA FROM PDFS
+        // FULL DATA FROM YOUR PDFS
         const menuData = [
             {
                 category: "small-plates",
@@ -99,7 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function renderMenu(filterType = 'all') {
             menuContainer.innerHTML = '';
+            
             menuData.forEach(section => {
+                // Filter Logic
                 const filteredItems = section.items.filter(item => {
                     if (filterType === 'all') return true;
                     return item.tags.includes(filterType);
@@ -132,15 +139,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         `;
                     });
+                    
                     sectionDiv.appendChild(grid);
                     menuContainer.appendChild(sectionDiv);
                 }
             });
         }
 
-        renderMenu();
+        renderMenu(); // Initial Render
 
-        // Filtering
+        // BUTTONS: Filtering
         document.querySelectorAll('.toggle-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
@@ -149,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Jump Links
+        // BUTTONS: Category Jumping
         document.querySelectorAll('.category-list li').forEach(li => {
             li.addEventListener('click', () => {
                 document.querySelectorAll('.category-list li').forEach(l => l.classList.remove('active'));
@@ -159,4 +167,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-})
+});
