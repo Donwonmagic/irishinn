@@ -416,43 +416,100 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
     transform: scale(0.98);
 }
 
-/* --- MOBILE HERO OPTIMIZATION --- */
-@media screen and (max-width: 768px) {
+/* --- RESPONSIVE & MOBILE FIXES --- */
+@media screen and (max-width: 1024px) {
     
-    /* 1. Give the photos room to breathe */
+    /* 1. HIDE DESKTOP NAV items */
+    .hidden-mobile { display: none; }
+    .menu-toggle { display: block; }
+    
+    /* 2. ENABLE MOBILE BOTTOM NAV */
+    .mobile-bottom-nav { display: flex; }
+
+    /* 3. FIX THE WHITE BAR GAP */
+    .split-hero {
+        margin-top: -1px; /* Pulls hero up to touch the nav */
+    }
+
+    /* 4. SPLIT HERO LAYOUT (Stacked) */
     .split-hero {
         flex-direction: column;
-        height: auto; /* Let it grow */
-    }
-    .split-side {
-        width: 100%;
-        height: 55vh; /* Taller photos so faces aren't cut off */
-        border-right: none;
-        border-bottom: 4px solid var(--gold); /* Gold separator line instead of badge collision */
+        height: auto; 
     }
 
-    /* 2. Shrink the Badge */
+    /* 5. FIX THE BADGE (Transform into a Middle Banner) */
     .hero-center-badge {
-        width: 110px; /* Much smaller */
-        height: 110px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Stronger shadow to lift it */
-    }
-    .hero-center-badge span:first-child { font-size: 0.6rem; letter-spacing: 1px; }
-    .hero-center-badge span:last-child { font-size: 1.1rem; }
-    .hero-center-badge::after { width: 25px; margin-top: 4px; }
-
-    /* 3. SAFETY ZONES (Aggressively push text away from center) */
-    /* Pub Text goes UP */
-    .pub-side .split-content { 
-        transform: translateY(-70px); 
-        padding: 0 20px;
-    }
-    /* Dining Text goes DOWN */
-    .dining-side .split-content { 
-        transform: translateY(70px); 
-        padding: 0 20px;
+        position: relative; /* No longer floating on top */
+        top: auto; left: auto; right: auto; bottom: auto;
+        transform: none;
+        
+        /* Order: Put it between the two photos */
+        order: 2; 
+        
+        /* Shape: Turn circle into a wide banner */
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+        border-left: none; border-right: none;
+        background: var(--cream);
+        padding: 15px 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        z-index: 20;
     }
     
-    /* 4. Fix Font Sizes for Phone */
-    .split-content h2 { font-size: 2.8rem; }
+    /* Adjust Badge Text for Banner Look */
+    .hero-center-badge span:first-child { display: none; } /* Hide 'One Menu' text to save space */
+    .hero-center-badge span:last-child { font-size: 1.2rem; }
+    .hero-center-badge::after { display: none; } /* Remove the decorative line */
+
+    /* 6. FIX THE PHOTOS (Focus on the good parts) */
+    .split-side {
+        width: 100%;
+        height: 45vh; /* Good height for mobile */
+        border: none;
+    }
+    
+    .pub-side { order: 1; }   /* Pub on Top */
+    .dining-side { order: 3; } /* Dining on Bottom */
+
+    .split-bg {
+        /* KEY FIX: Focus on the BOTTOM of the photo (Tables/Bar) not the ceiling */
+        background-position: center 80%; 
+    }
+
+    /* 7. FIX TEXT PLACEMENT (Get out of the way) */
+    .split-content {
+        max-width: 90%;
+        transform: none !important; /* Reset previous pushes */
+    }
+    
+    /* Pub Text: Move to Top Area */
+    .pub-side { align-items: flex-start; padding-top: 40px; }
+    .pub-side .split-content { margin-top: 20px; }
+
+    /* Dining Text: Move to Bottom Area */
+    .dining-side { align-items: flex-end; padding-bottom: 40px; }
+    .dining-side .split-content { margin-bottom: 20px; }
+
+    .split-content h2 { 
+        font-size: 3rem; 
+        text-shadow: 0 2px 10px rgba(0,0,0,0.8); /* Stronger shadow for readability */
+    }
+    
+    /* 8. MENU GRID FIX */
+    .category-list { justify-content: flex-start; padding-left: 20px; }
+    .menu-switch-btn { width: 100%; margin: 5px 0; }
+    .menu-switcher-container { padding: 1rem 20px; }
+    .menu-grid { grid-template-columns: 1fr; }
+}
+
+/* --- FORCE GREEN BUTTON (Nuclear Option) --- */
+.mobile-bottom-nav a[href*="resy.com"] {
+    background-color: #123821 !important; /* Green */
+    color: #c5a059 !important; /* Gold Text */
+    border: 1px solid #c5a059 !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 10px rgba(18, 56, 33, 0.3) !important;
+    display: flex !important;
+    flex-direction: row !important;
 }
