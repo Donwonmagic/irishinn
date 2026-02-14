@@ -12,6 +12,19 @@
     --shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+/* Add this to styles.css */
+.time-badge {
+    font-size: 0.6rem;
+    background: var(--gold);
+    color: var(--green-dark);
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
 /* --- RESET & GLOBAL --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 16px; }
