@@ -254,17 +254,15 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 
 /* MAKE SURE THE SECTION ABOVE ENDS WITH A } */
 
-/* --- OPTIMIZED INFINITE TICKER --- */
+/* --- OPTIMIZED INFINITE TICKER (Placed under Hero) --- */
 .ticker-wrap {
     width: 100%;
     overflow: hidden;
-    background-color: var(--gold); /* If this is white in your screenshot, this rule isn't loading */
-    padding: 14px 0;
-    border-bottom: 4px solid var(--green-dark);
-    
-    /* CRITICAL: This prevents the text from wrapping to the next line */
-    white-space: nowrap; 
-    
+    background-color: var(--cream); /* Matches body background for clean integration */
+    border-bottom: 1px solid rgba(197, 160, 89, 0.3); /* Subtle gold line */
+    border-top: 4px solid var(--green-dark); /* Connects visually to the hero */
+    padding: 12px 0;
+    white-space: nowrap;
     position: relative;
     z-index: 5;
     user-select: none; 
@@ -280,13 +278,12 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
     z-index: 10;
     pointer-events: none;
 }
-.ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--gold), transparent); }
-.ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--gold), transparent); }
+/* Update fade to match cream background */
+.ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+.ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
 
 .ticker {
-    /* CRITICAL: This allows the div to flow sideways */
-    display: inline-block; 
-    
+    display: inline-block;
     animation: marquee 80s linear infinite;
     will-change: transform;
 }
@@ -295,49 +292,9 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 .ticker-wrap:hover .ticker { animation-play-state: paused; cursor: default; }
 
 .ticker-item {
-    /* CRITICAL: This keeps items on the same line */
-    display: inline-block; 
-    
-    padding: 0 1.5rem;
-    font-size: 1.1rem;
-    color: var(--green-dark);
-    font-family: var(--font-head);
-    font-style: italic;
-    vertical-align: middle;
-}
-
-.ticker-item .source {
-    font-family: var(--font-body);
-    font-weight: 800;
-    font-style: normal;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    margin-left: 8px;
-    opacity: 0.8;
-    background: rgba(18, 56, 33, 0.1);
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-@keyframes marquee {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-50%, 0, 0); }
-}
-
-@media (max-width: 768px) {
-    .ticker-item { font-size: 0.95rem; padding: 0 1rem; }
-    .ticker { animation-duration: 60s; }
-    .ticker-wrap::before, .ticker-wrap::after { width: 50px; }
-}
-
-/* PAUSE ON HOVER */
-.ticker-wrap:hover .ticker { animation-play-state: paused; cursor: default; }
-
-.ticker-item {
     display: inline-block;
-    padding: 0 1.5rem;
-    font-size: 1.1rem;
+    padding: 0 1rem;
+    font-size: 1rem;
     color: var(--green-dark);
     font-family: var(--font-head);
     font-style: italic;
@@ -346,16 +303,24 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 
 .ticker-item .source {
     font-family: var(--font-body);
-    font-weight: 800;
+    font-weight: 700;
     font-style: normal;
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     letter-spacing: 1px;
     margin-left: 8px;
-    opacity: 0.8;
-    background: rgba(18, 56, 33, 0.1);
-    padding: 2px 6px;
-    border-radius: 4px;
+    color: var(--gold); /* Gold text for source looks premium */
+    opacity: 1;
+}
+
+/* NEW NUANCED SEPARATOR */
+.ticker-separator {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 0.6rem; /* Smaller than text */
+    vertical-align: middle;
+    opacity: 0.6;
+    padding: 0 0.5rem;
 }
 
 @keyframes marquee {
@@ -364,7 +329,7 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 }
 
 @media (max-width: 768px) {
-    .ticker-item { font-size: 0.95rem; padding: 0 1rem; }
+    .ticker-item { font-size: 0.9rem; }
     .ticker { animation-duration: 60s; }
     .ticker-wrap::before, .ticker-wrap::after { width: 50px; }
 }
