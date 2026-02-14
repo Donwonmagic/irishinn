@@ -501,3 +501,147 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
     display: flex !important;
     flex-direction: row !important;
 }
+
+/* --- STORY PAGE STYLES --- */
+
+/* The Timeline Container */
+.timeline-section {
+    padding: 4rem 0;
+    position: relative;
+    background-color: var(--cream);
+    overflow: hidden; /* Hides content that slides in */
+}
+
+/* The Vertical Line */
+.timeline-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: var(--gold);
+    opacity: 0.3;
+    transform: translateX(-50%);
+}
+
+.timeline-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+/* The Date Circle */
+.timeline-date {
+    width: 80px;
+    height: 80px;
+    background: var(--green-dark);
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    box-shadow: 0 0 0 5px var(--cream); /* Creates a gap around the circle */
+}
+
+.timeline-content {
+    width: 40%;
+    padding: 2rem;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-right: auto; /* Pushes to left by default */
+    margin-left: 0;
+    position: relative;
+}
+
+/* Right Side Content (Reverse) */
+.timeline-row.reverse .timeline-content {
+    margin-right: 0;
+    margin-left: auto; /* Pushes to right */
+}
+
+.timeline-content h3 {
+    color: var(--green-dark);
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--gold);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.timeline-content p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* --- THE GHOST SECTION --- */
+.ghost-section {
+    background-color: var(--green-dark);
+    padding: 5rem 0;
+    color: white;
+    position: relative;
+}
+
+.ghost-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.ghost-section h2 {
+    font-family: var(--font-head);
+    color: var(--gold);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.ghost-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 2;
+    color: rgba(255,255,255,0.9);
+}
+
+/* --- MOBILE TIMELINE ADJUSTMENTS --- */
+@media screen and (max-width: 768px) {
+    .timeline-section::before {
+        left: 20px; /* Move line to the left edge */
+    }
+    
+    .timeline-date {
+        left: 20px; /* Align circle to left line */
+        width: 60px;
+        height: 60px;
+        font-size: 0.9rem;
+    }
+    
+    .timeline-row {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 50px; /* Push content right of the line */
+    }
+    
+    .timeline-content {
+        width: 100%; /* Full width */
+        margin: 1rem 0 !important;
+    }
+    
+    .timeline-row.reverse .timeline-content {
+        margin-left: 0;
+    }
+}
