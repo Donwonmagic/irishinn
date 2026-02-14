@@ -8,23 +8,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusText = document.getElementById('status-text');
     
     if (statusDot) {
-        const hour = new Date().getHours();
-        // Assuming hours are 11am to 10pm (22:00)
-        const isOpen = hour >= 11 && hour < 22; 
+        const now = new Date();
+        const day = now.getDay(); // 0 = Sunday, 6 = Saturday
+        const hour = now.getHours();
+        const minutes = now.getMinutes();
+        const timeFloat = hour + (minutes / 60);
+
+        // Logic: 
+        // Brunch: Sat/Sun 11:00 - 14:30
+        // Dinner/Reg: Daily 11:00 - 22:00
         
+        let isOpen = false;
+        let statusMsg = "Closed (Opens 11am)";
+
+        if (timeFloat >= 11 && timeFloat < 22) {
+            isOpen = true;
+            statusMsg = "Open Now";
+            // Check for Brunch Specifics
+            if ((day === 0 || day === 6) && timeFloat < 14.5) {
+                statusMsg = "Serving Brunch Now";
+            }
+        }
+
         if (isOpen) {
             statusDot.style.background = '#4caf50'; // Green
-            statusText.textContent = "Open Now";
+            statusText.textContent = statusMsg;
         } else {
             statusDot.style.background = '#f44336'; // Red
-            statusText.textContent = "Closed (Opens 11am)";
+            statusText.textContent = statusMsg;
         }
     }
 
     // --- 2. MOBILE MENU TOGGLE ---
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileDropdown = document.getElementById('mobile-dropdown');
-    
     if(menuBtn){
         menuBtn.addEventListener('click', () => {
             mobileDropdown.classList.toggle('active');
@@ -32,11 +49,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 3. MENU SYSTEM ---
-    // If we are on the menu page, we load the data.
     const menuContainer = document.getElementById('menu-content');
+    
     if (menuContainer) {
-        // FULL DATA FROM YOUR PDFS
+        
+        // --- DATA BANK ---
         const menuData = [
+            {
+                category: "brunch",
+                title: "Weekend Brunch (Sat & Sun 11am-2:30pm)",
+                items: [
+                    // PLACEHOLDERS - PLEASE UPDATE WITH REAL ITEMS
+                    { name: "Full Irish Breakfast", price: 22, desc: "Two eggs, bangers, rashers, black & white pudding, mushrooms, tomato, beans, toast.", img: "", tags: [] },
+                    { name: "Corned Beef Hash", price: 19, desc: "House-made corned beef, potatoes, onions, poached eggs.", img: "corned_beef.jpg", tags: ["gf"] },
+                    { name: "Eggs Benedict", price: 18, desc: "Poached eggs, Canadian bacon, hollandaise, English muffin.", img: "", tags: [] },
+                    { name: "Smoked Salmon Plate", price: 20, desc: "Capers, onions, tomato, cream cheese, brown bread.", img: "", tags: [] },
+                    { name: "Brioche French Toast", price: 16, desc: "Berries, maple syrup, whipped cream.", img: "", tags: ["v"] }
+                ]
+            },
             {
                 category: "small-plates",
                 title: "Small Plates & Starters",
@@ -102,20 +132,48 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ];
 
+        // --- RENDER FUNCTION ---
         function renderMenu(filterType = 'all') {
             menuContainer.innerHTML = '';
             
             menuData.forEach(section => {
-                // Filter Logic
-                const filteredItems = section.items.filter(item => {
-                    if (filterType === 'all') return true;
-                    return item.tags.includes(filterType);
-                });
+                // If filtering by "Brunch", only show brunch.
+                // If filtering by "All" or others, HIDE brunch unless explicitly requested?
+                // LOGIC: "All" should typically imply the All-Day menu. Brunch is separate.
+                
+                let shouldRender = false;
 
-                if (filteredItems.length > 0) {
+                if (filterType === 'brunch') {
+                    if (section.category === 'brunch') shouldRender = true;
+                } else if (filterType === 'all') {
+                    if (section.category !== 'brunch') shouldRender = true;
+                } else {
+                    // Category or Tag filter
+                    // 1. Is it a category match? (e.g. "salads")
+                    if (section.category === filterType) shouldRender = true;
+                    // 2. Or does it have items with this tag? (e.g. "gf")
+                    // If we are in "GF" mode, we search ALL sections INCLUDING Brunch? 
+                    // Let's exclude brunch from "GF" toggle to keep it simple, or include it.
+                    // For now: Include if category matches OR if we are doing tag filtering on non-brunch items.
+                }
+
+                // Tag Filtering Logic (GF / Veg)
+                let filteredItems = section.items;
+                if (['gf', 'v'].includes(filterType)) {
+                    // If we are filtering tags, search everywhere EXCEPT Brunch (unless we want to mix)
+                    // Let's search everywhere.
+                    if (section.category !== 'brunch') {
+                         filteredItems = section.items.filter(item => item.tags.includes(filterType));
+                         if (filteredItems.length > 0) shouldRender = true;
+                    }
+                }
+
+                if (shouldRender) {
                     const sectionDiv = document.createElement('section');
                     sectionDiv.id = section.category;
                     sectionDiv.className = 'menu-section';
+                    
+                    // Add Title
                     sectionDiv.innerHTML = `<h3 style="color:var(--gold); margin-bottom:1rem; border-bottom:1px solid #eee; padding-bottom:5px;">${section.title}</h3>`;
                     
                     const grid = document.createElement('div');
@@ -146,24 +204,55 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        renderMenu(); // Initial Render
+        // --- SMART STARTUP LOGIC ---
+        // Detect if it is currently Brunch Time
+        const now = new Date();
+        const day = now.getDay();
+        const hour = now.getHours();
+        const minutes = now.getMinutes();
+        const timeFloat = hour + (minutes / 60);
 
-        // BUTTONS: Filtering
+        const isBrunchTime = (day === 0 || day === 6) && (timeFloat >= 11 && timeFloat < 14.5);
+
+        if (isBrunchTime) {
+            // Auto-select Brunch
+            document.querySelectorAll('.category-list li').forEach(l => l.classList.remove('active'));
+            const brunchTab = document.getElementById('brunch-tab');
+            if(brunchTab) brunchTab.classList.add('active');
+            renderMenu('brunch');
+        } else {
+            // Default to All Day
+            renderMenu('all');
+        }
+
+        // --- EVENTS ---
         document.querySelectorAll('.toggle-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.category-list li').forEach(l => l.classList.remove('active')); // Deselect cats
                 e.target.classList.add('active');
                 renderMenu(e.target.dataset.filter);
             });
         });
 
-        // BUTTONS: Category Jumping
         document.querySelectorAll('.category-list li').forEach(li => {
             li.addEventListener('click', () => {
                 document.querySelectorAll('.category-list li').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active')); // Deselect tags
                 li.classList.add('active');
-                const target = document.getElementById(li.dataset.target);
-                if(target) target.scrollIntoView({behavior: "smooth", block: "start"});
+                
+                const target = li.getAttribute('data-target');
+                
+                // If they clicked Brunch, just render brunch. 
+                // If they clicked a category, we might want to scroll to it OR filter by it.
+                // Current logic: Filter by it.
+                renderMenu(target);
+                
+                // Optional: Scroll to top of menu container
+                window.scrollTo({
+                    top: menuContainer.offsetTop - 150,
+                    behavior: 'smooth'
+                });
             });
         });
     }
