@@ -1,201 +1,207 @@
-// GLOBAL DATA: FULL MENU
-const MENUS = {
-    allday: [
-        {
-            id: "small-plates",
-            title: "Small Plates & Starters",
-            items: [
-                { name: "Potato Leek Soup", price: 11, desc: "Classic creamy potato and leek soup.", img: "" },
-                { name: "Hummus", price: 13, desc: "Pita, cucumbers, cherry tomatoes & olives.", img: "" },
-                { name: "Mediterranean Platter", price: 20, desc: "Hummus, braised peppers, eggplant fritter, tomato jam, pesto, mozz.", img: "" },
-                { name: "Chicken Quesadilla", price: 19, desc: "Tomato compote, melted cheese, pico, sour cream, guacamole.", img: "" },
-                { name: "Mussels & Clams", price: 21, desc: "Tomato, white wine, garlic & shallot broth. Garlic bread.", img: "" },
-                { name: "Popcorn Shrimp", price: 16, desc: "Deep-fried shrimp, cherry pepper sauce.", img: "" },
-                { name: "Chicken Wings", price: 15, desc: "Buffalo, BBQ, Old Bay, Sweet Chili, or Hot Honey.", img: "" },
-                { name: "Irish Tots", price: 14, desc: "Melted Irish cheddar, corned beef, aioli.", img: "" },
-                { name: "Semolina Fried Calamari", price: 18, desc: "Lightly fried semolina-battered calamari with cherry pepper sauce.", img: "" },
-                { name: "Crab & Artichoke Dip", price: 19, desc: "Fresh crab meat blended with artichoke, cream cheese & Parmesan.", img: "" }
-            ]
-        },
-        {
-            id: "salads",
-            title: "Salads",
-            items: [
-                { name: "Apple & Pomegranate", price: 16, desc: "Goat cheese, walnuts, spinach, champagne vin.", img: "" },
-                { name: "Classic Caesar", price: 14, desc: "Romaine, parmesan, croutons.", img: "" },
-                { name: "Irish Greens", price: 14, desc: "Cucumber, carrot, watermelon radish, Irish mustard vin.", img: "" },
-                { name: "Greens & Grains", price: 19, desc: "Spinach, quinoa, feta, hummus, avocado.", img: "" }
-            ]
-        },
-        {
-            id: "handhelds",
-            title: "Handhelds",
-            items: [
-                { name: "Crab Cake Sandwich", price: "M.P.", desc: "Pan-seared Maryland crab cake, lettuce, tomato, brioche.", img: "" },
-                { name: "Ahi Tuna Sandwich", price: 24, desc: "Seared ahi tuna, avocado, wasabi aioli, multigrain.", img: "" },
-                { name: "The Reuben", price: 20, desc: "House-cured corned beef, coleslaw, Swiss, rye.", img: "reuben.jpg" },
-                { name: "Short Rib Sandwich", price: 20, desc: "Braised short rib, swiss, brioche.", img: "" },
-                { name: "Irish Cheeseburger", price: 20, desc: "Angus beef, Irish cheddar, lettuce, tomato.", img: "" },
-                { name: "Beyond Burger", price: 20, desc: "Plant-based burger, guacamole.", img: "" },
-                { name: "Fish Tacos", price: 22, desc: "Blackened tilapia, pepper slaw.", img: "" }
-            ]
-        },
-        {
-            id: "signatures",
-            title: "Irish Signatures",
-            items: [
-                { name: "Shepherd's Pie", price: 21, desc: "Ground beef, peas, carrots, Jameson gravy.", img: "" },
-                { name: "Fish and Chips", price: 24, desc: "Guinness-battered cod, fries, coleslaw.", img: "" },
-                { name: "Banger Plate", price: 22, desc: "Pork sausages, mash, cabbage, mustard sauce.", img: "" },
-                { name: "Corned Beef & Cabbage", price: 24, desc: "Slow-braised corned beef, red potatoes, carrots, mustard sauce.", img: "corned_beef.jpg" },
-                { name: "Chicken Pot Pie", price: 24, desc: "Creamy sauce, flaky pastry crust.", img: "" },
-                { name: "Coconut Curry", price: 24, desc: "Chickpeas, cauliflower, jasmine rice.", img: "" },
-                { name: "Shrimp, Scallop & Grits", price: 26, desc: "Shrimp & scallops over cheddar grits, andouille sausage.", img: "" }
-            ]
-        },
-        {
-            id: "entrees",
-            title: "Main Entrées",
-            items: [
-                { name: "Seafood Stew", price: 34, desc: "Shrimp, scallops, mussels, fish, fennel broth.", img: "" },
-                { name: "Crab Cake Entrée", price: "M.P.", desc: "Mashed potatoes, veg, tartar.", img: "" },
-                { name: "Roasted Salmon", price: "M.P.", desc: "Rice pilaf, lemon caper beurre blanc.", img: "" },
-                { name: "Beef Stroganoff", price: 34, desc: "Beef tips, mushrooms, egg noodles, Guinness gravy.", img: "" },
-                { name: "Short Rib", price: 32, desc: "Slow-braised, Guinness gravy, cheddar grits.", img: "" },
-                { name: "Rack of Lamb", price: 38, desc: "Herb-crusted, fingerling potatoes, port reduction.", img: "" },
-                { name: "NY Strip Steak", price: 34, desc: "Fries, peppercorn sauce.", img: "" }
-            ]
-        }
-    ],
-    brunch: [
-        {
-            id: "brunch-specials",
-            title: "Brunch Specials",
-            items: [
-                { name: "Full Irish Breakfast", price: 22, desc: "Two eggs, bangers, rashers, black & white pudding, mushrooms, tomato, beans, toast.", img: "" },
-                { name: "Corned Beef Hash", price: 19, desc: "House-made corned beef, potatoes, onions, poached eggs.", img: "corned_beef.jpg" },
-                { name: "Eggs Benedict", price: 18, desc: "Poached eggs, Canadian bacon, hollandaise, English muffin.", img: "" },
-                { name: "Smoked Salmon Plate", price: 20, desc: "Capers, onions, tomato, cream cheese, brown bread.", img: "" },
-                { name: "Brioche French Toast", price: 16, desc: "Berries, maple syrup, whipped cream.", img: "" }
-            ]
-        },
-        {
-            id: "brunch-lunch",
-            title: "Lunch Favorites (Available during Brunch)",
-            items: [
-                { name: "The Reuben", price: 20, desc: "Corned beef, swiss, coleslaw, rye.", img: "reuben.jpg" },
-                { name: "Classic Caesar", price: 14, desc: "Romaine, parmesan, croutons.", img: "" },
-                { name: "Fish & Chips", price: 24, desc: "Guinness-battered cod, fries, coleslaw.", img: "" },
-                { name: "Irish Cheeseburger", price: 20, desc: "Angus beef, Irish cheddar.", img: "" }
-            ]
-        }
-    ]
-};
+/* --- VARIABLES --- */
+:root {
+    --green-dark: #123821; /* Deepest Irish Green */
+    --green-light: #1a472a;
+    --gold: #c5a059;
+    --cream: #f9f7f2;
+    --white: #ffffff;
+    --text-main: #2c2c2c;
+    --text-muted: #555555;
+    --font-head: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+    --shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
 
-// GLOBAL FUNCTION TO SWITCH MENUS
-window.switchMenu = function(menuType) {
-    const content = document.getElementById('menu-content');
-    const navList = document.getElementById('category-nav');
+/* --- RESET & GLOBAL --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { 
+    background-color: var(--cream); 
+    font-family: var(--font-body); 
+    color: var(--text-main); 
+    line-height: 1.6; 
+    padding-bottom: 80px; /* Space for mobile bottom nav */
+}
+
+/* UTILITIES */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.text-center { text-align: center; }
+.section-padding { padding: 5rem 0; }
+.gold-subtitle { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 1rem; }
+.section-title { font-size: 2.5rem; margin-bottom: 1.5rem; }
+.lead-text { max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: #555; }
+
+/* --- NAVIGATION --- */
+nav { background: var(--green-dark); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); }
+.nav-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo { color: var(--gold); font-family: var(--font-head); font-size: 1.5rem; text-decoration: none; font-weight: 700; letter-spacing: 1px; }
+.hidden-mobile { display: block; }
+.nav-links { display: flex; list-style: none; gap: 2rem; }
+.nav-links a { color: var(--white); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.btn-book { border: 1px solid var(--gold); padding: 5px 15px; color: var(--gold) !important; border-radius: 2px; }
+.menu-toggle { display: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
+
+/* MOBILE DROPDOWN */
+.mobile-dropdown {
+    display: none; background: var(--green-dark); position: absolute; top: 100%; left: 0; width: 100%;
+    flex-direction: column; padding: 1rem; text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.mobile-dropdown.active { display: flex; }
+.mobile-dropdown a { color: white; padding: 15px; text-decoration: none; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+/* --- COLLISION-PROOF SPLIT HERO --- */
+.split-hero { position: relative; display: flex; height: 85vh; width: 100%; overflow: hidden; }
+.split-side { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; text-decoration: none; border-right: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
+.split-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+.split-side:hover .split-bg { transform: scale(1.08); }
+.split-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%); z-index: 1; }
+.split-content { position: relative; z-index: 2; text-align: center; color: white; max-width: 80%; transition: transform 0.4s ease; }
+/* SAFE ZONES */
+.pub-side .split-content { padding-right: 60px; }
+.dining-side .split-content { padding-left: 60px; }
+
+.vibe-tag { display: inline-block; background: var(--gold); color: var(--green-dark); padding: 4px 12px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem; border-radius: 2px; }
+.split-content h2 { font-family: var(--font-head); font-size: 4rem; margin-bottom: 1.5rem; line-height: 1; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+.btn-text { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid var(--gold); padding-bottom: 5px; transition: color 0.3s; }
+.split-side:hover .btn-text { color: var(--gold); }
+
+/* --- PREMIUM CENTER BADGE --- */
+.hero-center-badge {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;
+    background-color: var(--cream); width: 160px; height: 160px; border-radius: 50%;
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 0 6px rgba(255,255,255,0.2), 0 0 0 7px var(--gold), 0 20px 50px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; pointer-events: none;
+}
+.hero-center-badge span:first-child { font-family: var(--font-body); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 8px; font-weight: 700; }
+.hero-center-badge span:last-child { font-family: var(--font-head); font-size: 1.3rem; font-style: italic; color: var(--green-dark); line-height: 1.1; }
+.hero-center-badge::after { content: ''; width: 40px; height: 2px; background: var(--gold); margin: 8px auto 0; display: block; }
+
+/* --- SOURCING BAR --- */
+.sourcing-bar { background-color: var(--white); border-bottom: 1px solid #eee; padding: 3rem 0; }
+.sourcing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center; }
+.source-item .icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+.source-item h4 { color: var(--green-dark); font-family: var(--font-head); font-size: 1.2rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+.source-item p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* --- MENU SWITCHER (Tier 1) --- */
+.menu-switcher-container {
+    background-color: var(--cream);
+    padding: 2rem 0 1rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.menu-switch-btn {
+    background: transparent;
+    border: 2px solid var(--green-dark);
+    color: var(--green-dark);
+    padding: 10px 25px;
+    font-family: var(--font-head);
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+.menu-switch-btn:hover { background: rgba(18, 56, 33, 0.05); }
+.menu-switch-btn.active { background: var(--green-dark); color: white; }
+.time-badge { background: var(--gold); color: var(--green-dark); font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 5px; text-transform: uppercase; font-weight: 800; }
+
+/* --- CATEGORY NAV (Tier 2) --- */
+#sticky-nav-container { background: white; position: sticky; top: 70px; z-index: 900; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+.category-list { display: flex; justify-content: center; list-style: none; gap: 2rem; padding: 1rem 0; overflow-x: auto; white-space: nowrap; }
+.category-list li { cursor: pointer; color: var(--text-muted); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; padding-bottom: 5px; border-bottom: 2px solid transparent; }
+.category-list li:hover, .category-list li.active { color: var(--green-dark); border-color: var(--gold); }
+
+/* --- MENU GRID --- */
+.menu-section { margin: 3rem 0; scroll-margin-top: 180px; }
+.menu-section h3 { font-size: 2rem; color: var(--green-dark); border-bottom: 1px solid var(--gold); display: inline-block; margin-bottom: 2rem; padding-right: 2rem; }
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; }
+.menu-item { background: white; border: 1px solid #eee; border-radius: 4px; overflow: hidden; display: flex; transition: transform 0.2s; }
+.menu-item:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.item-thumb { width: 100px; height: auto; background-size: cover; background-position: center; background-color: #f4f4f4; flex-shrink: 0; }
+.item-details { padding: 1.2rem; flex: 1; }
+.item-head { display: flex; justify-content: space-between; font-family: var(--font-head); font-size: 1.1rem; color: var(--green-dark); margin-bottom: 0.5rem; font-weight: 700; }
+.item-desc { font-size: 0.9rem; color: #666; line-height: 1.4; }
+
+/* --- REVIEWS & PAGE HERO --- */
+.reviews-bar { background: var(--gold); color: var(--green-dark); text-align: center; padding: 10px; font-weight: 700; font-size: 0.9rem; }
+.page-hero { height: 40vh; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
+.hero-text { position: relative; z-index: 2; color: var(--white); padding: 0 20px; }
+.hero-text h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
+
+/* --- EVENTS --- */
+.room-showcase { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; padding: 0 20px; }
+.room-card { background: white; border: 1px solid #eee; border-radius: 8px; overflow: hidden; transition: transform 0.3s; }
+.room-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.room-image { height: 250px; background-size: cover; background-position: center; position: relative; }
+.room-badge { position: absolute; top: 15px; left: 15px; background: white; padding: 5px 10px; font-size: 0.8rem; font-weight: 700; border-radius: 4px; color: var(--green-dark); }
+.room-content { padding: 1.5rem; }
+.room-code { color: var(--gold); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; display: block; }
+.features-list { list-style: none; margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted); }
+.features-list li::before { content: "• "; color: var(--gold); }
+.btn-download { display: inline-flex; align-items: center; gap: 10px; background-color: var(--white); color: var(--green-dark); border: 2px solid var(--green-dark); padding: 1rem 2rem; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; }
+.btn-download:hover { background-color: var(--green-dark); color: var(--white); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+/* --- FORMS & FOOTER --- */
+.inquiry-section { padding: 5rem 20px; background: var(--green-dark); color: white; }
+.form-box { background: white; padding: 3rem; border-radius: 4px; max-width: 700px; margin: 0 auto; color: var(--text-main); }
+.form-group { margin-bottom: 1.5rem; }
+.form-row { display: flex; gap: 1rem; }
+.form-row .form-group { flex: 1; }
+.event-form label { display: block; margin-bottom: 0.5rem; font-weight: 700; font-size: 0.9rem; color: var(--green-dark); }
+.event-form input, .event-form select, .event-form textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 2px; font-family: var(--font-body); }
+.btn-submit { width: 100%; padding: 1rem; background: var(--gold); color: var(--green-dark); border: none; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-top: 4rem; text-align: center; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+.status-indicator { margin-top: 10px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 20px; }
+#status-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; display: inline-block; }
+.copyright { margin-top: 2rem; font-size: 0.8rem; opacity: 0.6; }
+.small-text a { color: #aaa; text-decoration: underline; }
+
+/* POLICY PAGES */
+.policy-content { max-width: 800px; margin: 0 auto; background: white; padding: 2rem; border: 1px solid #eee; border-radius: 4px; }
+.policy-content h3 { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem; color: var(--green-dark); border-bottom: 1px solid var(--gold); padding-bottom: 5px; display: inline-block; }
+.policy-content p, .policy-content li { font-size: 1rem; color: var(--text-main); margin-bottom: 1rem; line-height: 1.8; }
+.policy-content a { color: var(--green-dark); font-weight: 700; text-decoration: underline; }
+
+/* MOBILE BOTTOM NAV */
+.mobile-bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: white; border-top: 1px solid #eee; z-index: 2000; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
+.nav-item { text-decoration: none; color: var(--text-muted); font-size: 0.7rem; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px; flex: 1; }
+.nav-item span { font-size: 1.2rem; margin-bottom: 2px; }
+.nav-item.cta { background: var(--green-dark); color: var(--gold); padding: 8px; border-radius: 5px; margin: 5px; font-weight: 700; font-size: 0.9rem; flex-direction: row; flex: 1.5; }
+
+/* --- RESPONSIVE FIXES --- */
+@media screen and (max-width: 1024px) {
+    .hidden-mobile { display: none; }
+    .menu-toggle { display: block; }
     
-    // 1. Update Buttons
-    document.querySelectorAll('.menu-switch-btn').forEach(btn => btn.classList.remove('active'));
-    // Simple logic to highlight correct button
-    if(menuType === 'allday') document.querySelector('button[onclick="switchMenu(\'allday\')"]').classList.add('active');
-    if(menuType === 'brunch') document.querySelector('button[onclick="switchMenu(\'brunch\')"]').classList.add('active');
-
-    // 2. Clear Current Content
-    content.innerHTML = '';
-    navList.innerHTML = '';
-
-    // 3. Load Data
-    const data = MENUS[menuType];
-
-    data.forEach(section => {
-        // A. Populate Sticky Nav
-        const li = document.createElement('li');
-        li.textContent = section.title.split(' ')[0]; // Shorten title for nav
-        if(section.id === 'brunch-specials') li.textContent = "Specials"; 
-        if(section.id === 'brunch-lunch') li.textContent = "Lunch";
-        
-        li.onclick = () => {
-            document.getElementById(section.id).scrollIntoView({behavior: "smooth", block: "start"});
-        };
-        navList.appendChild(li);
-
-        // B. Populate Grid
-        const sectionDiv = document.createElement('section');
-        sectionDiv.id = section.id;
-        sectionDiv.className = 'menu-section';
-        sectionDiv.innerHTML = `<h3>${section.title}</h3>`;
-        
-        const grid = document.createElement('div');
-        grid.className = 'menu-grid';
-
-        section.items.forEach(item => {
-            // Check if image exists
-            const bgStyle = item.img ? `background-image: url('${item.img}');` : `background-color: #f8f8f8;`;
-            
-            grid.innerHTML += `
-                <div class="menu-item">
-                    <div class="item-thumb" style="${bgStyle}"></div>
-                    <div class="item-details">
-                        <div class="item-head">
-                            <span>${item.name}</span>
-                            <span>$${item.price}</span>
-                        </div>
-                        <div class="item-desc">${item.desc}</div>
-                    </div>
-                </div>
-            `;
-        });
-
-        sectionDiv.appendChild(grid);
-        content.appendChild(sectionDiv);
-    });
-};
-
-document.addEventListener('DOMContentLoaded', () => {
+    /* Stack Split Hero Vertically */
+    .split-hero { flex-direction: column; height: auto; }
+    .split-side { width: 100%; height: 60vh; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
     
-    // 1. Footer Year
-    const yearSpan = document.getElementById('year');
-    if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+    /* MOBILE SAFE ZONES (The Fix) */
+    .pub-side .split-content { padding-right: 0; transform: translateY(-40px); }
+    .dining-side .split-content { padding-left: 0; transform: translateY(40px); }
+    
+    .hero-center-badge { width: 140px; height: 140px; }
+    .split-content h2 { font-size: 3rem; }
+    
+    /* Enable Mobile Nav */
+    .mobile-bottom-nav { display: flex; }
+    
+    /* Menu Adjustments */
+    .category-list { justify-content: flex-start; padding-left: 20px; }
+    .menu-switch-btn { width: 100%; margin: 5px 0; }
+    .menu-switcher-container { padding: 1rem 20px; }
+    .menu-grid { grid-template-columns: 1fr; }
+}
 
-    // 2. Open/Close Logic
-    const statusDot = document.getElementById('status-dot');
-    const statusText = document.getElementById('status-text');
-    if (statusDot) {
-        const now = new Date();
-        const hour = now.getHours();
-        const isOpen = hour >= 11 && hour < 22; 
-        if (isOpen) {
-            statusDot.style.background = '#4caf50';
-            statusText.textContent = "Open Now";
-        } else {
-            statusDot.style.background = '#f44336';
-            statusText.textContent = "Closed (Opens 11am)";
-        }
-    }
-
-    // 3. Mobile Menu Toggle
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileDropdown = document.getElementById('mobile-dropdown');
-    if(menuBtn){
-        menuBtn.addEventListener('click', () => {
-            mobileDropdown.classList.toggle('active');
-        });
-    }
-
-    // 4. SMART STARTUP: DETECT BRUNCH
-    if(document.getElementById('menu-content')) {
-        const now = new Date();
-        const day = now.getDay(); // 0=Sun, 6=Sat
-        const hour = now.getHours();
-        
-        // If Sat or Sun between 11am and 3pm, show Brunch first
-        if ((day === 0 || day === 6) && (hour >= 11 && hour < 15)) {
-            switchMenu('brunch');
-        } else {
-            switchMenu('allday');
-        }
-    }
-});
+@media screen and (max-width: 768px) {
+    .split-side { height: 50vh; }
+    .hero-center-badge { width: 120px; height: 120px; }
+    .hero-center-badge span:last-child { font-size: 1rem; }
+}
