@@ -250,14 +250,21 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 .policy-content p, .policy-content li { font-size: 1rem; color: var(--text-main); margin-bottom: 1rem; line-height: 1.8; }
 .policy-content a { color: var(--green-dark); font-weight: 700; text-decoration: underline; }
 
+/* ... previous styles ... */
+
+/* MAKE SURE THE SECTION ABOVE ENDS WITH A } */
+
 /* --- OPTIMIZED INFINITE TICKER --- */
 .ticker-wrap {
     width: 100%;
     overflow: hidden;
-    background-color: var(--gold);
+    background-color: var(--gold); /* If this is white in your screenshot, this rule isn't loading */
     padding: 14px 0;
     border-bottom: 4px solid var(--green-dark);
-    white-space: nowrap;
+    
+    /* CRITICAL: This prevents the text from wrapping to the next line */
+    white-space: nowrap; 
+    
     position: relative;
     z-index: 5;
     user-select: none; 
@@ -277,9 +284,51 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 .ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--gold), transparent); }
 
 .ticker {
-    display: inline-block;
+    /* CRITICAL: This allows the div to flow sideways */
+    display: inline-block; 
+    
     animation: marquee 80s linear infinite;
     will-change: transform;
+}
+
+/* PAUSE ON HOVER */
+.ticker-wrap:hover .ticker { animation-play-state: paused; cursor: default; }
+
+.ticker-item {
+    /* CRITICAL: This keeps items on the same line */
+    display: inline-block; 
+    
+    padding: 0 1.5rem;
+    font-size: 1.1rem;
+    color: var(--green-dark);
+    font-family: var(--font-head);
+    font-style: italic;
+    vertical-align: middle;
+}
+
+.ticker-item .source {
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-style: normal;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-left: 8px;
+    opacity: 0.8;
+    background: rgba(18, 56, 33, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+@keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (max-width: 768px) {
+    .ticker-item { font-size: 0.95rem; padding: 0 1rem; }
+    .ticker { animation-duration: 60s; }
+    .ticker-wrap::before, .ticker-wrap::after { width: 50px; }
 }
 
 /* PAUSE ON HOVER */
