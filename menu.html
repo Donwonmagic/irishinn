@@ -13,6 +13,7 @@
     <nav id="navbar">
         <div class="container nav-inner">
             <a href="index.html" class="logo">THE IRISH INN</a>
+            
             <div class="hidden-mobile">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -22,12 +23,16 @@
                     <li><a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank" class="btn-book">Reservations</a></li>
                 </ul>
             </div>
-            <div class="menu-toggle" id="mobile-menu-btn">☰</div>
+
+            <div class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
         </div>
-        <div class="mobile-dropdown" id="mobile-dropdown">
+
+        <div class="mobile-dropdown" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="menu.html">Menus</a>
+            <a href="story.html">Story</a>
             <a href="events.html">Events</a>
+            <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo">Book Table</a>
         </div>
     </nav>
 
@@ -40,8 +45,8 @@
     </header>
 
     <div class="menu-switcher-container">
-        <button class="menu-switch-btn active" onclick="switchMenu('allday')">All-Day Menu</button>
-        <button class="menu-switch-btn" onclick="switchMenu('brunch')">
+        <button class="menu-switch-btn active" onclick="switchMenu('allday')" data-menu="allday">All-Day Menu</button>
+        <button class="menu-switch-btn" onclick="switchMenu('brunch')" data-menu="brunch">
             Weekend Brunch <span class="time-badge">Sat/Sun</span>
         </button>
     </div>
@@ -51,27 +56,28 @@
             
             <div class="allergen-row">
                 <span class="filter-label">Dietary Filters:</span>
-                <button class="allergen-btn" onclick="toggleFilter('gf')" id="btn-gf">
+                <button class="allergen-btn" onclick="toggleFilter('gf')" data-tag="gf">
                     <span class="icon">🚫🌾</span> Gluten Free
                 </button>
-                <button class="allergen-btn" onclick="toggleFilter('df')" id="btn-df">
+                <button class="allergen-btn" onclick="toggleFilter('df')" data-tag="df">
                     <span class="icon">🚫🥛</span> Dairy Free
                 </button>
-                <button class="allergen-btn" onclick="toggleFilter('nf')" id="btn-nf">
-                    <span class="icon">🚫🥜</span> Nut Free
-                </button>
-                <button class="allergen-btn" onclick="toggleFilter('v')" id="btn-v">
+                <button class="allergen-btn" onclick="toggleFilter('v')" data-tag="v">
                     <span class="icon">🥬</span> Vegetarian
+                </button>
+                 <button class="allergen-btn" onclick="toggleFilter('vg')" data-tag="vg">
+                    <span class="icon">🌱</span> Vegan
                 </button>
             </div>
 
-            <ul class="category-list" id="category-nav">
+            <ul class="category-list" id="category-list">
                 </ul>
         </div>
     </div>
 
     <main class="container menu-body">
-        <div id="menu-content" class="fade-in-up"></div>
+        <div id="menu-container" class="fade-in-up">
+            </div>
         
         <div class="disclaimer">
             <p>* Consuming raw or undercooked meats may increase risk of foodborne illness.</p>
@@ -90,14 +96,17 @@
                 <p>(301) 229-6600</p>
             </div>
             <div class="footer-col">
-                <h3>Accessibility</h3>
-                <p class="small-text"><a href="accessibility.html">Read Statement</a></p>
+                <h3>Status</h3>
+                <div class="status-indicator">
+                    <span id="status-dot"></span> <span id="status-text">Checking...</span>
+                </div>
             </div>
         </div>
     </footer>
 
     <div class="mobile-bottom-nav">
         <a href="index.html" class="nav-item"><span>🏠</span> Home</a>
+        <a href="menu.html" class="nav-item"><span>🍴</span> Menu</a>
         <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank" class="nav-item cta">Book Table</a>
         <a href="events.html" class="nav-item"><span>📅</span> Events</a>
     </div>
