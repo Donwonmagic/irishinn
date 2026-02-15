@@ -278,8 +278,8 @@ function checkStatus() {
 
     // HOURS LOGIC (FIXED: 21.5 = 9:30 PM, not 12.5)
     // Mon-Thu: 11:30am - 9:30pm (11.5 - 21.5)
-    // Fri-Sat: 11:30am - 10:30pm (11.5 - 22.5)
-    // Sun:     11:00am - 9:30pm  (11.0 - 21.5)
+    // Fri-Sat: 11:30am - 10:00pm (11.5 - 22.0)
+    // Sun:     11:00am - 9:00pm  (11.0 - 21.0)
 
     if (day >= 1 && day <= 4) { 
         if (time >= 11.5 && time < 21.5) isOpen = true; 
