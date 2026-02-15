@@ -645,3 +645,46 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
         margin-left: 0;
     }
 }
+
+/* --- EXCITING UPSELL BADGES --- */
+.menu-options {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.option-badge {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    /* The "Gold" Look */
+    color: #8a6d3b; /* Darker Gold for text readability */
+    background-color: #fcf8e3; /* Very pale gold background */
+    border: 1px solid #c5a059; /* The Brand Gold border */
+    
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    cursor: default;
+}
+
+.option-badge:hover {
+    background-color: #c5a059;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Add a tiny "+" icon via CSS */
+.option-badge::before {
+    content: "+ ";
+    color: var(--gold);
+    font-weight: 900;
+}
+.option-badge:hover::before {
+    color: white;
+}
