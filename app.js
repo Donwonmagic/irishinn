@@ -338,6 +338,10 @@ window.toggleMobileMenu = toggleMobileMenu;
 
 // Run on Load
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Set copyright year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
     // 1. Check Open Status
     checkStatus();
     setInterval(checkStatus, 60000);

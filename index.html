@@ -29,14 +29,15 @@
                 </ul>
             </div>
 
-            <div class="menu-toggle" id="mobile-menu-btn">☰</div>
+            <div class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
         </div>
 
-        <div class="mobile-dropdown" id="mobile-dropdown">
+        <div class="mobile-dropdown" id="mobileMenu">
             <a href="index.html">Home</a>
             <a href="menu.html">All-Day Menu</a>
+            <a href="story.html">History</a>
             <a href="events.html">Private Events</a>
-            <a href="#about">Our Story</a>
+            <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank">Book Table</a>
         </div>
     </nav>
 
@@ -141,9 +142,13 @@
             <span class="gold-subtitle">A Washington Tradition</span>
             <h2 class="section-title">Stewards of History</h2>
             <p class="lead-text">
-                Like the great saloons of Washington D.C., The Irish Inn is more than a restaurant; it is a gathering place woven into the fabric of the neighborhood. 
+                Like the great saloons of Washington D.C., The Irish Inn is more than a restaurant; it is a gathering place woven into the fabric of the neighborhood.
                 From the 1931 fire that birthed this building to the Hughes family's stewardship today, we invite you to be part of our next chapter.
             </p>
+            <div style="margin-top:2.5rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+                <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank" class="cta-primary">Reserve a Table</a>
+                <a href="story.html" class="cta-secondary">Read Our Story →</a>
+            </div>
         </div>
     </section>
 
@@ -152,13 +157,17 @@
             <div class="footer-col">
                 <h3>The Irish Inn</h3>
                 <p>6119 Tulane Ave<br>Glen Echo, MD 20812</p>
-            </div>
-            <div class="footer-col">
-                <h3>Contact</h3>
-                <p><a href="tel:3012296600">(301) 229-6600</a></p>
-                <div class="status-indicator">
+                <p style="margin-top:0.5rem;"><a href="tel:3012296600" style="color:white;">(301) 229-6600</a></p>
+                <div class="status-indicator" style="margin-top:0.75rem;">
                     <span id="status-dot"></span> <span id="status-text">Checking status...</span>
                 </div>
+            </div>
+            <div class="footer-col">
+                <h3>Hours</h3>
+                <p>Mon: 4:30pm – 9:30pm</p>
+                <p>Tue–Fri: 11:30am – 9:30pm</p>
+                <p>Fri–Sat: 11:30am – 10:30pm</p>
+                <p>Sun: 11:00am – 9:30pm</p>
             </div>
             <div class="footer-col">
                 <h3>Accessibility</h3>
@@ -171,6 +180,7 @@
     </footer>
 
     <div class="mobile-bottom-nav">
+        <a href="index.html" class="nav-item"><span>🏠</span> Home</a>
         <a href="menu.html" class="nav-item"><span>🍽️</span> Menu</a>
         <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank" class="nav-item cta">Book Table</a>
         <a href="events.html" class="nav-item"><span>📅</span> Events</a>

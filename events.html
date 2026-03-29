@@ -22,12 +22,14 @@
                     <li><a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank" class="btn-book">Reservations</a></li>
                 </ul>
             </div>
-            <div class="menu-toggle" id="mobile-menu-btn">☰</div>
+            <div class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
         </div>
-        <div class="mobile-dropdown" id="mobile-dropdown">
+        <div class="mobile-dropdown" id="mobileMenu">
             <a href="index.html">Home</a>
-            <a href="menu.html">Menus</a>
-            <a href="events.html">Events</a>
+            <a href="menu.html">Menu</a>
+            <a href="story.html">History</a>
+            <a href="events.html">Private Events</a>
+            <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank">Book Table</a>
         </div>
     </nav>
 
@@ -61,10 +63,11 @@
                 <p class="room-code">Rooms F & G</p>
                 <p>Sage green walls and eclectic art create a bright, sophisticated atmosphere perfect for luncheons.</p>
                 <ul class="features-list">
-                    <li>Capacity: 30-60 Guests</li>
+                    <li>Capacity: 30–60 Guests</li>
                     <li>Flexible Seating</li>
                     <li>Natural Light</li>
                 </ul>
+                <a href="#inquiry" class="btn-inquire" onclick="document.getElementById('inq-space').value='Garden Gallery'">Inquire About This Space →</a>
             </div>
         </div>
 
@@ -77,10 +80,11 @@
                 <p class="room-code">Rooms C & D</p>
                 <p>Deep maroon walls and 1930s architecture offer a formal, intimate setting for dinners.</p>
                 <ul class="features-list">
-                    <li>Capacity: 20-40 Guests</li>
+                    <li>Capacity: 20–40 Guests</li>
                     <li>Private Floor</li>
                     <li>Formal Atmosphere</li>
                 </ul>
+                <a href="#inquiry" class="btn-inquire" onclick="document.getElementById('inq-space').value='Historic Suite'">Inquire About This Space →</a>
             </div>
         </div>
 
@@ -93,38 +97,67 @@
                 <p class="room-code">Porch Annex</p>
                 <p>A cozy, fireplace-lit nook with red-checkered accents. Ideal for family gatherings.</p>
                 <ul class="features-list">
-                    <li>Capacity: 10-16 Guests</li>
+                    <li>Capacity: 10–16 Guests</li>
                     <li>Fireplace</li>
                     <li>Cozy & Tucked Away</li>
                 </ul>
+                <a href="#inquiry" class="btn-inquire" onclick="document.getElementById('inq-space').value='Sun Porch'">Inquire About This Space →</a>
             </div>
         </div>
 
     </section>
 
-    <section class="inquiry-section">
+    <section class="inquiry-section" id="inquiry">
         <div class="container">
             <div class="form-box">
                 <h2>Request Availability</h2>
-                <form class="event-form">
+                <p style="color:#666; margin-bottom:1.5rem; font-size:0.95rem;">Fill out the form below and our events team will respond within one business day. For immediate assistance, call <a href="tel:3012296600" style="color:var(--green-dark); font-weight:700;">(301) 229-6600</a>.</p>
+                <div id="form-success" style="display:none; background:#e8f5e9; border:1px solid #a5d6a7; border-radius:4px; padding:1.5rem; text-align:center; margin-bottom:1rem;">
+                    <strong style="color:#2e7d32; font-size:1.1rem;">Thank you! We'll be in touch within one business day.</strong>
+                </div>
+                <form class="event-form" id="event-inquiry-form" novalidate>
                     <div class="form-row">
-                        <div class="form-group"><label>Name</label><input type="text"></div>
-                        <div class="form-group"><label>Email</label><input type="email"></div>
+                        <div class="form-group">
+                            <label for="inq-name">Name <span style="color:#c0392b;">*</span></label>
+                            <input type="text" id="inq-name" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inq-email">Email <span style="color:#c0392b;">*</span></label>
+                            <input type="email" id="inq-email" name="email" placeholder="you@example.com" required>
+                        </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Space Preference</label>
-                            <select>
-                                <option>Garden Gallery (Green)</option>
-                                <option>Historic Suite (Red)</option>
-                                <option>Sun Porch</option>
-                                <option>The Pub</option>
+                            <label for="inq-date">Event Date <span style="color:#c0392b;">*</span></label>
+                            <input type="date" id="inq-date" name="event_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inq-guests">Guest Count <span style="color:#c0392b;">*</span></label>
+                            <input type="number" id="inq-guests" name="guest_count" placeholder="e.g. 40" min="1" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inq-space">Space Preference</label>
+                            <select id="inq-space" name="space_preference">
+                                <option value="">— Select a space —</option>
+                                <option value="Garden Gallery">Garden Gallery (30–60 guests)</option>
+                                <option value="Historic Suite">Historic Suite (20–40 guests)</option>
+                                <option value="Sun Porch">Sun Porch (10–16 guests)</option>
+                                <option value="The Pub">The Pub</option>
+                                <option value="Unsure">Not sure yet</option>
                             </select>
                         </div>
-                        <div class="form-group"><label>Guest Count</label><input type="number"></div>
+                        <div class="form-group">
+                            <label for="inq-phone">Phone</label>
+                            <input type="tel" id="inq-phone" name="phone" placeholder="(301) 555-0100">
+                        </div>
                     </div>
-                    <div class="form-group"><label>Event Details</label><textarea rows="3"></textarea></div>
-                    <button type="submit" class="btn-submit">Submit Request</button>
+                    <div class="form-group">
+                        <label for="inq-details">Event Details</label>
+                        <textarea id="inq-details" name="details" rows="3" placeholder="Tell us about your occasion — event type, timing, any special requests…"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Inquiry →</button>
                 </form>
             </div>
         </div>
@@ -138,7 +171,7 @@
             </div>
             <div class="footer-col">
                 <h3>Contact</h3>
-                <p>(301) 229-6600</p>
+                <p><a href="tel:3012296600" style="color:white;">(301) 229-6600</a></p>
             </div>
             <div class="footer-col">
                 <h3>Accessibility</h3>
@@ -154,5 +187,28 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        (function () {
+            var form = document.getElementById('event-inquiry-form');
+            var success = document.getElementById('form-success');
+            if (!form) return;
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var required = form.querySelectorAll('[required]');
+                var valid = true;
+                required.forEach(function (el) {
+                    el.style.borderColor = '';
+                    if (!el.value.trim()) {
+                        el.style.borderColor = '#c0392b';
+                        valid = false;
+                    }
+                });
+                if (!valid) return;
+                form.style.display = 'none';
+                success.style.display = 'block';
+                success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        })();
+    </script>
 </body>
 </html>

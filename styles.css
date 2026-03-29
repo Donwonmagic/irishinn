@@ -328,18 +328,7 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 .ticker-separator {
     display: inline-block;
     color: var(--gold);
-    font-size: 0.8rem; /* Made slightly larger to match new text size */
-    vertical-align: middle;
-    opacity: 0.6;
-    padding: 0 0.8rem;
-}
-}
-
-/* NEW NUANCED SEPARATOR */
-.ticker-separator {
-    display: inline-block;
-    color: var(--gold);
-    font-size: 0.6rem; /* Smaller than text */
+    font-size: 0.6rem;
     vertical-align: middle;
     opacity: 0.6;
     padding: 0 0.5rem;
@@ -688,3 +677,92 @@ footer { background: var(--green-dark); color: white; padding: 3rem 0; margin-to
 .option-badge:hover::before {
     color: white;
 }
+
+/* --- SHARED CTA BUTTONS (used on homepage, story, menu) --- */
+.cta-primary {
+    display: inline-block;
+    background: var(--green-dark);
+    color: var(--gold);
+    padding: 0.9rem 2rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.3s, transform 0.2s;
+    border: 2px solid var(--green-dark);
+}
+.cta-primary:hover { background: var(--green-light); transform: translateY(-2px); }
+
+.cta-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--green-dark);
+    padding: 0.9rem 2rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: 2px solid var(--green-dark);
+    border-radius: 2px;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.cta-secondary:hover { background: var(--green-dark); color: var(--gold); transform: translateY(-2px); }
+
+/* --- STORY PAGE CTA SECTION --- */
+.story-cta-section {
+    background: var(--cream);
+    border-top: 1px solid rgba(197,160,89,0.3);
+}
+
+/* --- MENU PAGE CTA BANNER --- */
+.menu-cta-banner {
+    background: var(--green-dark);
+    color: var(--white);
+    padding: 4rem 20px;
+    margin-top: 3rem;
+}
+.menu-cta-banner h2 {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+.menu-cta-banner p {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+.menu-cta-banner .cta-primary {
+    background: var(--gold);
+    color: var(--green-dark);
+    border-color: var(--gold);
+}
+.menu-cta-banner .cta-primary:hover { background: #b8903f; border-color: #b8903f; }
+.menu-cta-or {
+    display: block;
+    margin-top: 1rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+}
+.menu-cta-or a { color: rgba(255,255,255,0.85); }
+
+/* --- ROOM INQUIRE BUTTON --- */
+.btn-inquire {
+    display: inline-block;
+    margin-top: 1.25rem;
+    color: var(--green-dark);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+}
+.btn-inquire:hover { color: var(--gold); }
