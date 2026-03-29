@@ -5,50 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Story | The Irish Inn at Glen Echo</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav>
+    <nav id="navbar">
         <div class="container nav-inner">
             <a href="index.html" class="logo">THE IRISH INN</a>
-            
             <ul class="nav-links hidden-mobile">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="story.html" class="active">History</a></li>
                 <li><a href="events.html">Private Events</a></li>
-                    <li><a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank" class="btn-book">Reservations</a></li>
+                <li><a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank" class="btn-book">Reservations</a></li>
             </ul>
-
             <div class="menu-toggle" onclick="toggleMobileMenu()">☰</div>
         </div>
-        
         <div class="mobile-dropdown" id="mobileMenu">
             <a href="index.html">Home</a>
-            <a href="story.html">Story</a>
+            <a href="story.html">History</a>
             <a href="menu.html">Menu</a>
             <a href="events.html">Private Events</a>
-            <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo">Book Table</a>
+            <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank">Book Table</a>
         </div>
     </nav>
 
-    <header class="page-hero" style="background-image: url('bar_red.jpg'); height: 60vh;">
+    <header class="page-hero story-hero" style="background-image: url('bar_red.png');">
         <div class="hero-overlay"></div>
         <div class="hero-text">
             <span class="gold-subtitle">Est. 1931</span>
             <h1>If These Walls Could Talk</h1>
-            <p class="lead-text" style="color: #fff; opacity: 0.9;">From a 1930s roadhouse to a biker bar, and finally, a Glen Echo landmark.</p>
+            <p class="story-hero-sub">From a 1930s roadhouse to a biker bar — and finally, a Glen Echo landmark.</p>
         </div>
     </header>
 
+    <!-- CHAPTER 1 -->
     <section class="timeline-section">
         <div class="container">
-            
+
             <div class="timeline-row">
                 <div class="timeline-date">1931</div>
                 <div class="timeline-content">
-                    <h3>The Fire & The Phoenix</h3>
+                    <h3>The Fire &amp; The Phoenix</h3>
                     <p>The story begins with a spark. In 1930, the Moxley family home—which stood on this very ground—burned to the ground. Undeterred, the family rebuilt the structure in 1931 as a tavern to celebrate the end of Prohibition.</p>
                     <p>It was a simple roadside stop for travelers heading up MacArthur Boulevard, offering cold beer and a view of the Potomac.</p>
                 </div>
@@ -58,8 +57,8 @@
                 <div class="timeline-date">1940s</div>
                 <div class="timeline-content">
                     <h3>The "Otto's Grill" Era</h3>
-                    <p>In 1944, Otto Kumfert purchased the tavern and renamed it <strong>Otto’s Grill</strong>. It became a local institution, known for its hearty food and no-nonsense atmosphere.</p>
-                    <p>By the 1960s, it had transformed into <strong>Trav’s</strong>, a notorious roadhouse and biker bar. Legend has it that the bar fights were as legendary as the chili, and the "wild west" spirit of Glen Echo was alive and well within these walls.</p>
+                    <p>In 1944, Otto Kumfert purchased the tavern and renamed it <strong>Otto's Grill</strong>. It became a local institution, known for its hearty food and no-nonsense atmosphere.</p>
+                    <p>By the 1960s, it had transformed into <strong>Trav's</strong>, a notorious roadhouse and biker bar. Legend has it that the bar fights were as legendary as the chili, and the "wild west" spirit of Glen Echo was alive and well within these walls.</p>
                 </div>
             </div>
 
@@ -67,35 +66,45 @@
                 <div class="timeline-date">1986</div>
                 <div class="timeline-content">
                     <h3>The Inn at Glen Echo</h3>
-                    <p>The rough edges were sanded down in the late 80s when it became <strong>The Inn at Glen Echo</strong>. The motorcycles were traded for sedans, and the menu shifted toward fine dining.</p>
-                    <p>However, the building still held its secrets. Staff began reporting strange occurrences—footsteps in empty rooms, lights flickering, and the feeling of being watched.</p>
+                    <p>The rough edges were sanded down in the late 1980s when it became <strong>The Inn at Glen Echo</strong>. The motorcycles were traded for sedans, and the menu shifted toward fine dining.</p>
+                    <p>But the building still held its secrets. Staff began reporting strange occurrences — footsteps in empty rooms, lights flickering, and the feeling of being watched.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- PHOTO BREAK 1 -->
+    <div class="story-photo-break" style="background-image: url('bar_red.png');">
+        <div class="photo-break-overlay"></div>
+        <blockquote class="photo-break-quote">
+            "Still pouring. Still gathering.<br>Since 1931."
+        </blockquote>
+    </div>
+
+    <!-- GHOST SECTION -->
     <section class="ghost-section">
         <div class="container text-center">
             <div class="ghost-icon">👻</div>
             <h2>The Lady in White</h2>
             <p class="ghost-text">
-                The Inn is widely considered one of the most haunted locations in Maryland. 
-                Guests and staff alike have reported seeing a "Lady in White" wandering the upstairs dining rooms. 
-                Others tell tales of a mischievous spirit at the bar who likes to reorganize the glassware when no one is looking. 
-                Don't worry—they seem to be friendly spirits, perhaps just enjoying one last pint.
+                The Inn is widely considered one of the most haunted locations in Maryland.
+                Guests and staff alike have reported seeing a "Lady in White" wandering the upstairs dining rooms.
+                Others tell tales of a mischievous spirit at the bar who likes to reorganize the glassware when no one is looking.
+                Don't worry — they seem to be friendly spirits, perhaps just enjoying one last pint.
             </p>
         </div>
     </section>
 
+    <!-- CHAPTER 2 -->
     <section class="timeline-section">
         <div class="container">
-            
+
             <div class="timeline-row">
                 <div class="timeline-date">2003</div>
                 <div class="timeline-content">
                     <h3>The Irish Revival</h3>
-                    <p>In 2003, Christy Hughes, a native of County Galway and former manager of The Dubliner in D.C., saw the potential in the historic building. Along with his wife Libby, he purchased the property and began a massive renovation.</p>
+                    <p>In 2003, Christy Hughes — a native of County Galway and former manager of The Dubliner in D.C. — saw the potential in the historic building. Along with his wife Libby, he purchased the property and began a massive renovation.</p>
                     <p>They peeled back the layers of history to reveal the original wood, added the beautiful oak bar you see today, and reopened as <strong>The Irish Inn at Glen Echo</strong>.</p>
                 </div>
             </div>
@@ -105,13 +114,22 @@
                 <div class="timeline-content">
                     <h3>A Living Landmark</h3>
                     <p>Today, the Inn is a rare blend of upscale dining and neighborhood comfort. It has been named one of the <em>Top 100 Restaurants</em> by Washingtonian and The Washington Post.</p>
-                    <p>Whether you are here for the White Tablecloth dining in the Moxley Room or a pint of Guinness and live music in the pub, you are part of a story that has been 100 years in the making.</p>
+                    <p>Whether you are here for white-tablecloth dining in the Moxley Room or a pint of Guinness with live music in the pub, you are part of a story that has been 100 years in the making.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- PHOTO BREAK 2 -->
+    <div class="story-photo-break" style="background-image: url('room_red.png');">
+        <div class="photo-break-overlay"></div>
+        <blockquote class="photo-break-quote">
+            "Named Top 100 Restaurants<br>— Washingtonian &amp; The Washington Post"
+        </blockquote>
+    </div>
+
+    <!-- CTA -->
     <section class="story-cta-section text-center section-padding">
         <div class="container">
             <span class="gold-subtitle">Be Part of the Story</span>
@@ -134,9 +152,10 @@
                 </div>
                 <div class="footer-col">
                     <h3>Hours</h3>
-                    <p>Mon-Thu: 11:30am - 9:30pm</p>
-                    <p>Fri-Sat: 11:30am - 10:30pm</p>
-                    <p>Sun: 11:00am - 9:30pm</p>
+                    <p>Mon: 4:30pm – 9:30pm</p>
+                    <p>Tue–Fri: 11:30am – 9:30pm</p>
+                    <p>Fri–Sat: 11:30am – 10:30pm</p>
+                    <p>Sun: 11:00am – 9:30pm</p>
                 </div>
                 <div class="footer-col">
                     <h3>Follow Us</h3>
@@ -147,24 +166,16 @@
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2025 The Irish Inn at Glen Echo.
+                &copy; <span id="year"></span> The Irish Inn at Glen Echo. All Rights Reserved.
             </div>
         </div>
     </footer>
-    
+
     <div class="mobile-bottom-nav">
-        <a href="index.html" class="nav-item">
-            <span>🏠</span> Home
-        </a>
-        <a href="menu.html" class="nav-item">
-            <span>🍴</span> Menu
-        </a>
-        <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank" class="nav-item cta">
-            Book Table
-        </a>
-        <a href="events.html" class="nav-item">
-            <span>📅</span> Events
-        </a>
+        <a href="index.html" class="nav-item"><span>🏠</span> Home</a>
+        <a href="menu.html" class="nav-item"><span>🍴</span> Menu</a>
+        <a href="https://resy.com/cities/bethesda-md/venues/irish-inn-at-glen-echo" target="_blank" class="nav-item cta">Book Table</a>
+        <a href="events.html" class="nav-item"><span>📅</span> Events</a>
     </div>
 
     <script src="app.js"></script>
