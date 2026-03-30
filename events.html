@@ -33,7 +33,7 @@
         </div>
     </nav>
 
-    <header class="page-hero" style="background-image: url('room_green.jpg');">
+    <header class="page-hero" style="background-image: url('room_red.png');">
         <div class="hero-overlay"></div>
         <div class="hero-text">
             <h1>Host Your Occasion</h1>
@@ -41,9 +41,29 @@
         </div>
     </header>
 
-    <section class="container section-padding text-center">
-        <h2 class="section-title">Plan With Ease</h2>
-        <p class="lead-text">From intimate rehearsal dinners to corporate retreats, our distinct rooms offer the perfect backdrop.</p>
+    <section class="events-intro container section-padding text-center">
+        <span class="gold-subtitle">Private Dining & Events</span>
+        <h2 class="section-title">Every Gathering Deserves a Great Room</h2>
+        <p class="lead-text">From intimate rehearsal dinners to corporate retreats, our historic spaces accommodate 10 to 60 guests. Tell us about your occasion and our events team will handle every detail.</p>
+
+        <div class="events-feature-grid">
+            <div class="events-feature">
+                <span class="events-feature-icon">🕯️</span>
+                <h4>Intimate to Grand</h4>
+                <p>Spaces that flex from a dinner for 10 to a reception for 60.</p>
+            </div>
+            <div class="events-feature">
+                <span class="events-feature-icon">🍀</span>
+                <h4>Full-Service Hosting</h4>
+                <p>Dedicated staff, curated set menus, and a century of hospitality.</p>
+            </div>
+            <div class="events-feature">
+                <span class="events-feature-icon">📋</span>
+                <h4>Custom Menus</h4>
+                <p>Private dining menus designed around your group and occasion.</p>
+            </div>
+        </div>
+
         <div style="margin-top: 2rem;">
             <a href="event-packet.pdf" class="btn-download" target="_blank" download>
                 <span>📄</span> Download Private Dining Kit (PDF)
@@ -52,68 +72,13 @@
         </div>
     </section>
 
-    <section class="room-showcase">
-        
-        <div class="room-card">
-            <div class="room-image" style="background-image: url('room_green.jpg');">
-                <span class="room-badge">Main Floor</span>
-            </div>
-            <div class="room-content">
-                <h3>The Garden Gallery</h3>
-                <p class="room-code">Rooms F & G</p>
-                <p>Sage green walls and eclectic art create a bright, sophisticated atmosphere perfect for luncheons.</p>
-                <ul class="features-list">
-                    <li>Capacity: 30–60 Guests</li>
-                    <li>Flexible Seating</li>
-                    <li>Natural Light</li>
-                </ul>
-                <a href="#inquiry" class="btn-inquire" onclick="document.getElementById('inq-space').value='Garden Gallery'">Inquire About This Space →</a>
-            </div>
-        </div>
-
-        <div class="room-card">
-            <div class="room-image" style="background-image: url('room_red.jpg');">
-                <span class="room-badge">Upstairs Suite</span>
-            </div>
-            <div class="room-content">
-                <h3>The Historic Suite</h3>
-                <p class="room-code">Rooms C & D</p>
-                <p>Deep maroon walls and 1930s architecture offer a formal, intimate setting for dinners.</p>
-                <ul class="features-list">
-                    <li>Capacity: 20–40 Guests</li>
-                    <li>Private Floor</li>
-                    <li>Formal Atmosphere</li>
-                </ul>
-                <a href="#inquiry" class="btn-inquire" onclick="document.getElementById('inq-space').value='Historic Suite'">Inquire About This Space →</a>
-            </div>
-        </div>
-
-        <div class="room-card">
-            <div class="room-image" style="background-image: url('room_porch.jpg');">
-                <span class="room-badge">Semi-Private</span>
-            </div>
-            <div class="room-content">
-                <h3>The Sun Porch</h3>
-                <p class="room-code">Porch Annex</p>
-                <p>A cozy, fireplace-lit nook with red-checkered accents. Ideal for family gatherings.</p>
-                <ul class="features-list">
-                    <li>Capacity: 10–16 Guests</li>
-                    <li>Fireplace</li>
-                    <li>Cozy & Tucked Away</li>
-                </ul>
-                <a href="#inquiry" class="btn-inquire" onclick="document.getElementById('inq-space').value='Sun Porch'">Inquire About This Space →</a>
-            </div>
-        </div>
-
-    </section>
-
     <section class="inquiry-section" id="inquiry">
         <div class="container">
             <div class="form-box">
                 <h2>Request Availability</h2>
                 <p style="color:#666; margin-bottom:1.5rem; font-size:0.95rem;">Fill out the form below and our events team will respond within one business day. For immediate assistance, call <a href="tel:3012296600" style="color:var(--green-dark); font-weight:700;">(301) 229-6600</a>.</p>
                 <div id="form-success" style="display:none; background:#e8f5e9; border:1px solid #a5d6a7; border-radius:4px; padding:1.5rem; text-align:center; margin-bottom:1rem;">
-                    <strong style="color:#2e7d32; font-size:1.1rem;">Thank you! We'll be in touch within one business day.</strong>
+                    <strong style="color:#2e7d32; font-size:1.1rem;">Thank you — we'll be in touch within one business day.</strong>
                 </div>
                 <form class="event-form" id="event-inquiry-form" novalidate>
                     <div class="form-row">
@@ -138,14 +103,15 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="inq-space">Space Preference</label>
-                            <select id="inq-space" name="space_preference">
-                                <option value="">— Select a space —</option>
-                                <option value="Garden Gallery">Garden Gallery (30–60 guests)</option>
-                                <option value="Historic Suite">Historic Suite (20–40 guests)</option>
-                                <option value="Sun Porch">Sun Porch (10–16 guests)</option>
-                                <option value="The Pub">The Pub</option>
-                                <option value="Unsure">Not sure yet</option>
+                            <label for="inq-type">Occasion</label>
+                            <select id="inq-type" name="occasion_type">
+                                <option value="">— Type of event —</option>
+                                <option value="Birthday">Birthday Celebration</option>
+                                <option value="Anniversary">Anniversary</option>
+                                <option value="Rehearsal Dinner">Rehearsal Dinner</option>
+                                <option value="Corporate">Corporate / Business</option>
+                                <option value="Holiday">Holiday Party</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -154,8 +120,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inq-details">Event Details</label>
-                        <textarea id="inq-details" name="details" rows="3" placeholder="Tell us about your occasion — event type, timing, any special requests…"></textarea>
+                        <label for="inq-details">Tell Us More</label>
+                        <textarea id="inq-details" name="details" rows="3" placeholder="Event type, timing, dietary needs, or anything else we should know…"></textarea>
                     </div>
                     <button type="submit" class="btn-submit">Send Inquiry →</button>
                 </form>
